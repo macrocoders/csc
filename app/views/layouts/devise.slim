@@ -3,9 +3,11 @@ html
   head
     title Csc
     = csrf_meta_tags
-
+    
+    link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css"
     = stylesheet_link_tag  'application', media: 'all', 'data-turbolinks-track': 'reload'
-    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
 
-  body
-    = yield 
+  body class="#{yield (:body_class)}"
+    = render 'shared/flash_messages'
+    = yield
+  = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'  
