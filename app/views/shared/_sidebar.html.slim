@@ -2,13 +2,12 @@ aside.main-sidebar
   section.sidebar
     .user-panel
       .pull-left.image
-        img.img-circle[src="dist/img/user2-160x160.jpg" alt="User Image"]
+        = image_tag 'no-user-image.png', class: 'img-circle'
       .pull-left.info
-        p
-          | User NAME
-        a[href="#"]
-          i.fa.fa-circle.text-success
-          |  Online
+        p= current_user.full_name
+        /a[href="#"]
+        /  i.fa.fa-circle.text-success
+        /  |  Online
     form.sidebar-form[action="#" method="get"]
       .input-group
         input.form-control[type="text" name="q" placeholder="Search..."]

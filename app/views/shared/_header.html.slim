@@ -16,18 +16,14 @@ header.main-header
       ul.nav.navbar-nav
         li.dropdown.user.user-menu
           a.dropdown-toggle[href="#" data-toggle="dropdown"]
-            img.user-image[src="dist/img/user2-160x160.jpg" alt="User Image"]
-            span.hidden-xs
-              | Alexander Pierce
+            = image_tag 'no-user-image.png', class: 'user-image'
+            span.hidden-xs= current_user.full_name 
           ul.dropdown-menu
             li.user-header
-              img.img-circle[src="dist/img/user2-160x160.jpg" alt="User Image"]
-              p
-                |  Alexander Pierce
+              = image_tag 'no-user-image.png', class: 'img-circle'
+              p= current_user.full_name
             li.user-footer
               .pull-left
-                a.btn.btn-default.btn-flat[href="#"]
-                  | Profile
+                = link_to t('app.navigation.user.profile'), edit_user_registration_path, class: 'btn btn-default btn-flat'
               .pull-right
-                a.btn.btn-default.btn-flat[href="#"]
-                  | Sign out
+                = link_to t('app.navigation.user.sign_out'), destroy_user_session_path, class: 'btn btn-default btn-flat'

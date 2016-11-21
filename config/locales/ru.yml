@@ -1,0 +1,10 @@
+ru:
+  app:
+    navigation:
+      user:
+        sign_out: 'Выйти'
+        sign_in: 'Войти'
+        profile: 'Профиль'
+    buttons:
+      sign_in: 'Войти'  
+  
