@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+html
+  head
+    title Csc
+    = csrf_meta_tags
+    
+    link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css"
+    = stylesheet_link_tag  'application', media: 'all', 'data-turbolinks-track': 'reload'
+
+  body class="skin-blue sidebar-mini hold-transition #{yield (:body_class)}"
+    .wrapper
+      = render 'shared/header'
+      = render 'shared/sidebar'
+      = render 'shared/flash_messages'
+      .content-wrapper
+        section.content-header
+          = yield :page_title
+          ol.breadcrumb
+            = yield :breadcrumbs
+        section.content    
+          = yield
+  = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'  
