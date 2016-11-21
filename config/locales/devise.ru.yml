@@ -58,4 +58,8 @@ ru:
         subject: "Инструкции по разблокировке учётной записи"
     links:
       forgot_you_password: 'Забыли пароль?'
-      remember_me: 'Запомнить меня'    
+      remember_me: 'Запомнить меня'
+    misc:
+      leave_blank_password_if_you_dont_want_to_change_it: '(оставьте пароль пустым, если не хотите его менять)'
+      we_need_your_current_password_to_confirm_your_changes: '(введите текущий пароль, чтобы произвести изменения)'
+      characters_minimum: 'символов минимум'      

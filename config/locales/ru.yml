@@ -5,6 +5,12 @@ ru:
         sign_out: 'Выйти'
         sign_in: 'Войти'
         profile: 'Профиль'
+        edit: 'Редактировать пользователя'
     buttons:
-      sign_in: 'Войти'  
+      sign_in: 'Войти'
+      back: 'Назад'
+      update: 'Обновить'
+      edit: 'Редактировать'
+      create: 'Создать'
+            
   

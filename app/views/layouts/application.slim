@@ -11,10 +11,10 @@ html
     .wrapper
       = render 'shared/header'
       = render 'shared/sidebar'
-      = render 'shared/flash_messages'
       .content-wrapper
+        = render 'shared/flash_messages'
         section.content-header
-          = yield :page_title
+          h1= yield :page_title
           ol.breadcrumb
             = yield :breadcrumbs
         section.content    
