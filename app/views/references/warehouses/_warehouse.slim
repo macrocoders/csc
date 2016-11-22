@@ -1,0 +1,10 @@
+tr
+  td= warehouse.id
+  td= warehouse.title
+  td= warehouse.user.full_name
+  td= l warehouse.created_at
+  td
+    = link_to edit_references_warehouse_path(warehouse), class: 'btn btn-app-small' do
+      i.fa.fa-edit
+    = link_to references_warehouse_path(warehouse), method: :delete, class: 'btn btn-app-small btn-danger', data: { confirm: "Вы действительно хотите удалить склад?" } do
+      i.fa.fa-remove

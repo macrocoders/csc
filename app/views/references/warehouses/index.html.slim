@@ -1,0 +1,18 @@
+- page_title 'Склады'
+
+.row
+  .col-xs-12
+    .box
+      .box-header
+        .box-tools
+          .input-group.input-group-sm
+            = link_to 'Создать новый', new_references_warehouse_path, class: 'btn btn-block btn-default'
+      .box-body.table-responsive.no-padding
+        table.table.table-hover
+          tr
+            th ID
+            th Название  
+            th Ответственный  
+            th Создан
+            th
+          = render @warehouses

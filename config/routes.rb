@@ -6,5 +6,6 @@ Rails.application.routes.draw do
   
   namespace :references do
     resources :users
+    resources :warehouses
   end  
 end

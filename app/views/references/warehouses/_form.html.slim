@@ -1,0 +1,11 @@
+= form_for(@warehouse, url: @warehouse.new_record? ? references_warehouses_path : references_warehouse_path(@warehouse)) do |f|
+  = error_messages(@warehouse)
+  .form-group
+    = f.label :title
+    = f.text_field :title, class: 'form-control'
+  .form-group
+    = f.label :user_id
+    = f.select :user_id, User.all.map{ |u| [u.full_name, u.id]}, {}, {class: 'form-control'}
+  .box-footer
+    = link_to t('app.buttons.back'), :back, class: 'btn btn-default'
+    = f.submit (@warehouse.new_record? ? 'Создать' : 'Изменить'), class: "btn btn-info pull-right"
