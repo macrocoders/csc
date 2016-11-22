@@ -9,6 +9,9 @@ ru:
         current_password: 'Текущий пароль'
         email: 'Email'
         password_confirmation: 'Подтверждение пароля'
+        full_name: 'ФИО'
+        created_at: 'Создан'
+        
   
     errors:
       models:

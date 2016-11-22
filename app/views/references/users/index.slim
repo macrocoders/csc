@@ -1,0 +1,17 @@
+- page_title t('app.navigation.menu.users')
+
+.row
+  .col-xs-12
+    .box
+      .box-header
+        .box-tools
+          .input-group.input-group-sm
+            = link_to 'Создать нового', new_references_user_path, class: 'btn btn-block btn-default'
+      .box-body.table-responsive.no-padding
+        table.table.table-hover
+          tr
+            th ID
+            th= t 'activerecord.attributes.user.full_name' 
+            th= t 'activerecord.attributes.user.created_at' 
+            th
+          = render @users
