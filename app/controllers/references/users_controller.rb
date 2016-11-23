@@ -2,7 +2,10 @@ class References::UsersController < ApplicationController
   before_filter :init_user, only: %w(edit destroy update destroy)
   
   def index
-    @users = User.all.order(:created_at)
+    respond_to do |format|
+      format.html
+      format.json { render json: UserDatatable.new(view_context) }
+    end
   end
     
   def new

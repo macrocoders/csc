@@ -1,28 +1,23 @@
 class References::WarehousesController < ApplicationController
   before_action :set_warehouse, only: [:show, :edit, :update, :destroy]
 
-  # GET /warehouses
-  # GET /warehouses.json
   def index
-    @warehouses = Warehouse.all
+    respond_to do |format|
+      format.html
+      format.json { render json: WarehouseDatatable.new(view_context) }
+    end
   end
 
-  # GET /warehouses/1
-  # GET /warehouses/1.json
   def show
   end
 
-  # GET /warehouses/new
   def new
     @warehouse = Warehouse.new
   end
 
-  # GET /warehouses/1/edit
   def edit
   end
 
-  # POST /warehouses
-  # POST /warehouses.json
   def create
     @warehouse = Warehouse.new(warehouse_params)
 
@@ -37,8 +32,6 @@ class References::WarehousesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /warehouses/1
-  # PATCH/PUT /warehouses/1.json
   def update
     respond_to do |format|
       if @warehouse.update(warehouse_params)
@@ -51,8 +44,6 @@ class References::WarehousesController < ApplicationController
     end
   end
 
-  # DELETE /warehouses/1
-  # DELETE /warehouses/1.json
   def destroy
     @warehouse.destroy
     respond_to do |format|
@@ -62,12 +53,10 @@ class References::WarehousesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_warehouse
       @warehouse = Warehouse.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def warehouse_params
       params.require(:warehouse).permit(:title, :user_id)
     end

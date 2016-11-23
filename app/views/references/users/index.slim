@@ -1,17 +1,22 @@
 - page_title t('app.navigation.menu.users')
 
 .row
-  .col-xs-12
+  .col-md-12
     .box
       .box-header
         .box-tools
           .input-group.input-group-sm
             = link_to 'Создать нового', new_references_user_path, class: 'btn btn-block btn-default'
-      .box-body.table-responsive.no-padding
-        table.table.table-hover
-          tr
-            th ID
-            th= t 'activerecord.attributes.user.full_name' 
-            th= t 'activerecord.attributes.user.created_at' 
-            th
-          = render @users
+      .box-body
+        table.table.table-hover#datatable data-source=(references_users_path(format: :json))
+          thead
+            tr
+              th ID
+              th= t 'activerecord.attributes.user.last_name'
+              th= t 'activerecord.attributes.user.first_name'
+              th= t 'activerecord.attributes.user.middle_name'
+              th= t 'activerecord.attributes.user.email' 
+              th= t 'activerecord.attributes.user.created_at' 
+              th
+              th
+          tbody

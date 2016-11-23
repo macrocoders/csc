@@ -48,3 +48,6 @@ gem 'font-awesome-sass', '~> 4.4.0'
 gem "kaminari"
 
 gem 'active_link_to'
+
+gem 'jquery-datatables-rails' #, git: 'git@github.com:rweng/jquery-datatables-rails.git', branch: 'master'
+gem 'ajax-datatables-rails' #, git: 'git@github.com:antillas21/ajax-datatables-rails.git', branch: 'v-0-4-0'

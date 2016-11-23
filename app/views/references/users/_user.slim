@@ -1,9 +1,0 @@
-tr
-  td= user.id
-  td= user.full_name 
-  td= l user.created_at
-  td
-    = link_to edit_references_user_path(user), class: 'btn btn-app-small' do
-      i.fa.fa-edit
-    = link_to references_user_path(user), method: :delete, class: 'btn btn-app-small btn-danger', data: { confirm: "Вы действительно хотите удалить сотрудника?" } do
-      i.fa.fa-remove
