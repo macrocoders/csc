@@ -10,10 +10,14 @@ ru:
         email: 'Email'
         password_confirmation: 'Подтверждение пароля'
         full_name: 'ФИО'
-        created_at: 'Создан'
+        created_at: 'Дата создания'
       brand:
         title: 'Название'
-        created_at: 'Создан'  
+        created_at: 'Дата создания'
+      model:
+        title: 'Название'
+        brand_id: 'Брэнд'
+        created_at: 'Дата создания'     
         
   
     errors:

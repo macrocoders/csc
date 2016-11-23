@@ -1,0 +1,11 @@
+= form_for(@model, url: @model.new_record? ? references_models_path : references_model_path(@model)) do |f|
+  = error_messages(@model)
+  .form-group
+    = f.label :title
+    = f.text_field :title, class: 'form-control'
+  .form-group
+    = f.label :brand_id
+    = f.select :brand_id, Brand.ordered_by_title.map{ |b| [b.title, b.id]}, {}, {class: 'form-control'}
+  .box-footer
+    = link_to t('app.buttons.back'), :back, class: 'btn btn-default'
+    = f.submit (@model.new_record? ? 'Создать' : 'Изменить'), class: "btn btn-info pull-right"

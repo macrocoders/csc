@@ -1,0 +1,20 @@
+- page_title 'Модели'
+
+.row
+  .col-xs-12
+    .box
+      .box-header
+        .box-tools
+          .input-group.input-group-sm
+            = link_to 'Создать новую', new_references_model_path, class: 'btn btn-block btn-default'
+      .box-body
+        table.table.table-hover#datatable data-source=(references_models_path(format: :json))
+          thead
+            tr
+              th ID
+              th Брэнд  
+              th Модель  
+              th Создана
+              th
+              th
+          tbody    
