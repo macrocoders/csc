@@ -11,6 +11,9 @@ ru:
         password_confirmation: 'Подтверждение пароля'
         full_name: 'ФИО'
         created_at: 'Создан'
+      brand:
+        title: 'Название'
+        created_at: 'Создан'  
         
   
     errors:

@@ -1,0 +1,19 @@
+- page_title 'Брэнды'
+
+.row
+  .col-md-12
+    .box
+      .box-header
+        .box-tools
+          .input-group.input-group-sm
+            = link_to 'Создать новый', new_references_brand_path, class: 'btn btn-block btn-default'
+      .box-body
+        table.table.table-hover#datatable data-source=(references_brands_path(format: :json))
+          thead
+            tr
+              th ID
+              th= t 'activerecord.attributes.brand.title'
+              th= t 'activerecord.attributes.brand.created_at'
+              th
+              th
+          tbody

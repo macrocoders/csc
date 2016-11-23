@@ -27,6 +27,6 @@ class UserDatatable < AjaxDatatablesRails::Base
   end
 
   def get_raw_records
-    User.ordered.all
+    User.all
   end  
 end

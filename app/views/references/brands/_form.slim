@@ -1,0 +1,8 @@
+= form_for(@brand, url: @brand.new_record? ? references_brands_path : references_brand_path(@brand)) do |f|
+  = error_messages(@brand)
+  .form-group
+    = f.label :title
+    = f.text_field :title, class: 'form-control'
+  .box-footer
+    = link_to t('app.buttons.back'), :back, class: 'btn btn-default'
+    = f.submit (@brand.new_record? ? 'Создать' : 'Изменить'), class: "btn btn-info pull-right"

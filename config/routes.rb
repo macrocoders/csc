@@ -7,5 +7,6 @@ Rails.application.routes.draw do
   namespace :references do
     resources :users
     resources :warehouses
+    resources :brands
   end  
 end
