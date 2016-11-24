@@ -11,5 +11,9 @@ class Client < ApplicationRecord
   
   def legal_status_s
     legal_status.zero? ? 'Физ. лицо' : 'Юр. лицо'
-  end   
+  end
+  
+  def address
+    [city, street, hous, flat].join(', ')
+  end     
 end

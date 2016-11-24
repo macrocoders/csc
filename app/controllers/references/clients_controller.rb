@@ -63,6 +63,6 @@ class References::ClientsController < ApplicationController
     end
 
     def client_params
-      params.require(:client).permit(:name, :phone, :additional_phone, :email, :address, :legal_status, :is_buyer, :is_supplier)
+      params.require(:client).permit(:name, :phone, :additional_phone, :email, :city, :street, :hous, :flat, :legal_status, :is_buyer, :is_supplier)
     end
 end

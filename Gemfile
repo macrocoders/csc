@@ -36,6 +36,11 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
+group :development, :staging do
+  gem 'faker'
+  gem 'letter_opener'
+  gem 'seedbank'
+end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 

@@ -2,11 +2,11 @@ class ClientDatatable < AjaxDatatablesRails::Base
   def_delegators :@view, :link_to, :h, :content_tag, :edit_references_client_path, :references_client_path
 
   def sortable_columns
-    @sortable_columns ||= %w(Client.id Client.name Client.phone Client.address Client.legal_status)
+    @sortable_columns ||= %w(Client.id Client.name Client.phone Client.street Client.legal_status)
   end
 
   def searchable_columns
-    @searchable_columns ||= %w(Client.name Client.phone Client.address)
+    @searchable_columns ||= %w(Client.name Client.phone Client.street)
   end
 
   private

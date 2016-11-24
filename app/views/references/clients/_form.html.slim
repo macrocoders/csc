@@ -8,10 +8,20 @@
     = f.phone_field :phone, class: 'form-control'
   .form-group
     = f.label :additional_phone
-    = f.phone_field :additional_phone, class: 'form-control'
-  .form-group
-    = f.label :address
-    = f.text_field :address, class: 'form-control'
+    = f.phone_field :additional_phone, class: 'form-control' 
+  .row  
+    .form-group.col-md-4
+      = f.label :city
+      = f.text_field :city, class: 'form-control'
+    .form-group.col-md-4
+      = f.label :street
+      = f.text_field :street, class: 'form-control'
+    .form-group.col-md-2
+      = f.label :hous
+      = f.text_field :hous, class: 'form-control'
+    .form-group.col-md-2
+      = f.label :flat
+      = f.text_field :flat, class: 'form-control'      
   .form-group  
     = f.label :email
     = f.email_field :email, class: 'form-control'
