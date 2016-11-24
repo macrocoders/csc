@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   root to: 'dashboard#index'
   
   namespace :references do
+    resources :clients
     resources :users
     resources :warehouses
     resources :brands

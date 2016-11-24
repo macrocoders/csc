@@ -17,7 +17,15 @@ ru:
       model:
         title: 'Название'
         brand_id: 'Брэнд'
-        created_at: 'Дата создания'     
+        created_at: 'Дата создания'
+      client:
+        name: 'Имя'
+        phone: 'Телефон'
+        additional_phone: 'Дополнительный телефон'
+        address: 'Адрес'
+        legal_status: 'Юридический статус'
+        is_buyer: 'Покупатель'
+        is_supplier: 'Поставщик'      
         
   
     errors:

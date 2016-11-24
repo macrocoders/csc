@@ -5,5 +5,6 @@
 //= require dataTables/jquery.dataTables
 //= require bootstrap-sprockets
 //= require icheck.min
+//= require jquery.mask.min
 //= require app
 //= require init

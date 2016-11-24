@@ -1,0 +1,31 @@
+= form_for(@client, url: @client.new_record? ? references_clients_path : references_client_path(@client)) do |f|
+  = error_messages(@client)
+  .form-group
+    = f.label :name
+    = f.text_field :name, class: 'form-control'
+  .form-group
+    = f.label :phone
+    = f.phone_field :phone, class: 'form-control'
+  .form-group
+    = f.label :additional_phone
+    = f.phone_field :additional_phone, class: 'form-control'
+  .form-group
+    = f.label :address
+    = f.text_field :address, class: 'form-control'
+  .form-group  
+    = f.label :email
+    = f.email_field :email, class: 'form-control'
+  .form-group
+    = f.label :legal_status
+    = f.select :legal_status, legal_statuses, {}, {class: 'form-control'}
+  .form-group
+    = f.label :is_buyer do 
+      = f.check_box :is_buyer
+      |   Покупатель
+  .form-group
+    = f.label :is_supplier do 
+      = f.check_box :is_supplier
+      |   Поставщик        
+  .box-footer
+    = link_to t('app.buttons.back'), :back, class: 'btn btn-default'
+    = f.submit (@client.new_record? ? 'Создать' : 'Изменить'), class: "btn btn-info pull-right"

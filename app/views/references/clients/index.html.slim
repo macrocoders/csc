@@ -1,0 +1,22 @@
+- page_title 'Контрагенты'
+
+.row
+  .col-xs-12
+    .box
+      .box-header
+        .box-tools
+          .input-group.input-group-sm
+            = link_to 'Создать нового', new_references_client_path, class: 'btn btn-block btn-default'
+      .box-body
+        table.table.table-hover#datatable data-source=(references_clients_path(format: :json))
+          thead
+            tr
+              th ID
+              th Имя  
+              th Телефон  
+              th Адрес
+              th Юр. статус
+              th Добавлен  
+              th
+              th
+          tbody    
