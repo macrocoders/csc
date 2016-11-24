@@ -51,6 +51,11 @@ class References::ClientsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def select_clients_dialog
+    @clients = Client.ordered_by_name.page params[:page]
+    render layout: false
+  end  
 
   private
     def set_client

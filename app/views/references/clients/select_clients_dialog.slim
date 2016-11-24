@@ -1,0 +1,15 @@
+.modal-header
+  button.close[type="button" data-dismiss="modal" aria-hidden="true"]
+    | ×
+  h4.modal-title
+    | Контрагенты
+.modal-body
+  ul
+    - @clients.each do |client|
+      li
+        = client.name
+.modal-footer
+  button.btn.btn-default[type="button" data-dismiss="modal"]
+    | Закрыть
+  button.btn.btn-primary[type="submit"]
+    | Применить

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161123124846) do
+ActiveRecord::Schema.define(version: 20161124060700) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,6 +73,24 @@ ActiveRecord::Schema.define(version: 20161123124846) do
     t.index ["brand_id"], name: "index_models_on_brand_id", using: :btree
   end
 
+  create_table "orders", force: :cascade do |t|
+    t.integer  "client_id"
+    t.integer  "warehouse_id"
+    t.integer  "job_type",      default: 0
+    t.integer  "model_id"
+    t.string   "imei"
+    t.string   "serial_number"
+    t.string   "defect"
+    t.string   "completeness"
+    t.string   "appearance"
+    t.text     "description"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.index ["client_id"], name: "index_orders_on_client_id", using: :btree
+    t.index ["model_id"], name: "index_orders_on_model_id", using: :btree
+    t.index ["warehouse_id"], name: "index_orders_on_warehouse_id", using: :btree
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -102,4 +120,7 @@ ActiveRecord::Schema.define(version: 20161123124846) do
   end
 
   add_foreign_key "models", "brands"
+  add_foreign_key "orders", "clients"
+  add_foreign_key "orders", "models"
+  add_foreign_key "orders", "warehouses"
 end

@@ -43,4 +43,23 @@ aside.main-sidebar
           li
             = link_to references_clients_path do
               i.fa.fa-circle-o
-              | Клиенты                     
+              | Клиенты 
+
+        li.treeview
+          a[href="#"]
+            i.fa.fa-book
+            span Документы
+            span.pull-right-container
+              i.fa.fa-angle-left.pull-right 
+          ul.treeview-menu
+            li
+              = link_to documents_orders_path do
+                i.fa.fa-circle-o
+                | Заказ наряды
+                
+        li.treeview
+          a[href="#"]
+            i.fa.fa-book
+            span Отчёты
+            span.pull-right-container
+              i.fa.fa-angle-left.pull-right                                  

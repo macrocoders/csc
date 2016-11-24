@@ -1,5 +1,9 @@
 class Client < ApplicationRecord
+  has_many :orders
+  
   validates :name, presence: true
+  
+  scope :ordered_by_name, -> {order(:name)}
   
   #legal status
   NATURAL_PERSON_STATUS = 0

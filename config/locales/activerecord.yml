@@ -25,8 +25,18 @@ ru:
         address: 'Адрес'
         legal_status: 'Юридический статус'
         is_buyer: 'Покупатель'
-        is_supplier: 'Поставщик'      
-        
+        is_supplier: 'Поставщик'
+      order:
+        job_type: 'Тип работы'
+        warehouse_id: 'Склад'
+        client_id: 'Контрагент'
+        model_id: 'Модель'
+        imei: 'Имей'
+        serial_number: 'Серийный номер'
+        defect: 'Заявленный дефект'
+        completeness: 'Комплектность'
+        description: 'Дополнительное описание'
+
   
     errors:
       models:
