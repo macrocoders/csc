@@ -9,10 +9,11 @@
   .form-group
     = f.label :client_id
     .input-group
-      = f.text_field :client_id, class: 'form-control', disabled: true 
+      = text_field_tag :client_name, @order.client.try(:name), class: 'form-control', disabled: true 
       .input-group-addon
         = link_to select_clients_dialog_references_clients_path, data: {target: "#modalDialog", toggle: "modal"} do 
-          i.fa.fa-search  
+          i.fa.fa-search
+      = f.hidden_field :client_id, class: 'form-control'      
   .form-group
     = f.label :model_id
     .input-group

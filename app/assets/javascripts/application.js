@@ -8,3 +8,4 @@
 //= require jquery.mask.min
 //= require app
 //= require init
+//= require ajax_pagination

@@ -15,5 +15,13 @@ class Client < ApplicationRecord
   
   def address
     [city, street, hous, flat].join(', ')
+  end
+  
+  def self.search(search)
+    if search
+      where('name LIKE ?', "%#{search}%")
+    else
+      Client.all
+    end
   end     
 end

@@ -50,7 +50,7 @@ gem 'slim-rails'
 gem 'bootstrap-sass', '~> 3.3.5'
 gem 'font-awesome-sass', '~> 4.4.0'
 
-gem "kaminari"
+gem 'kaminari'
 
 gem 'active_link_to'
 

@@ -51,7 +51,7 @@ class Documents::OrdersController < ApplicationController
       format.json { head :no_content }
     end
   end
-
+  
   private
     def set_order
       @order = Order.find(params[:id])

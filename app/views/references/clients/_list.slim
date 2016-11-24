@@ -1,0 +1,5 @@
+- @clients.each do |client|
+  tr
+    td= radio_button_tag :client_id, client.id, false, data: {name: client.name, id: client.id}
+    td= client.name
+    td= client.address  

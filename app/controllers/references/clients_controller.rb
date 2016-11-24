@@ -53,7 +53,7 @@ class References::ClientsController < ApplicationController
   end
   
   def select_clients_dialog
-    @clients = Client.ordered_by_name.page params[:page]
+    @clients = Client.search(params[:search]).ordered_by_name.page(params[:page] || 1).per(10) 
     render layout: false
   end  
 
