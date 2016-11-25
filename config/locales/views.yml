@@ -2,7 +2,7 @@ ru:
   views:
     pagination:
       first: 'Первая'
-      truncate: 'Разделитель'
+      truncate: '...'
       last: 'Последняя'
       next: 'Следующая'
       current: 'Текущая'

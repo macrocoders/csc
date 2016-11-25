@@ -11,7 +11,8 @@
             .form-group
                 = text_field_tag :search, nil, autofocus: true, class: 'form-control'
       .modal-body#listContainer    
-      .modal-footer
+      .modal-footer 
+        = link_to 'Новый', "#{yield :modal_create_new_link}", remote: true, class: 'btn btn-default pull-left'
         button.btn.btn-default[type="button" data-dismiss="modal"]
           | Закрыть
         button.btn.btn-primary#submitDialogBtn

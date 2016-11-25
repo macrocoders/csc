@@ -14,6 +14,10 @@ class References::ClientsController < ApplicationController
 
   def new
     @client = Client.new
+    respond_to do |format|
+      format.html
+      format.js {render layout: false}
+    end  
   end
 
   def edit
@@ -30,9 +34,11 @@ class References::ClientsController < ApplicationController
       if @client.save
         format.html { redirect_to references_clients_url, notice: 'Контрагент был успешно создан.' }
         format.json { render :show, status: :created, location: @client }
+        format.js { render layout: false }
       else
         format.html { render :new }
         format.json { render json: @client.errors, status: :unprocessable_entity }
+        format.js { render layout: false }
       end
     end
   end

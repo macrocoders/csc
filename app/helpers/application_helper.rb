@@ -9,7 +9,11 @@ module ApplicationHelper
  
  def modal_search_form_action(action)
    content_for(:modal_search_form_action) { action }
- end           
+ end 
+ 
+ def modal_create_new_link(link)
+   content_for(:modal_create_new_link) { link }
+ end          
  
  def error_messages(resource)
     return "" if resource.errors.empty?
