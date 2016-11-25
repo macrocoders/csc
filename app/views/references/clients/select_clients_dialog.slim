@@ -1,27 +1,13 @@
-.modal-header
-  button.close[type="button" data-dismiss="modal" aria-hidden="true"]
-    | ×
-  h4.modal-title
-    | Контрагенты
-.modal-body
-  = form_tag(select_clients_dialog_references_clients_path, remote: true, method: 'get', id: 'searchForm') do
-    .form-group
-      = label_tag 'Поиск'
-      = text_field_tag :search, params[:search], class: 'form-control'
-  .box-body
-    table.table.table-bordered
-      thead
-        th
-        th ФИО
-        th Адрес 
-      tbody
-        = render 'list'
-  = paginate @clients               
-.modal-footer
-  button.btn.btn-default[type="button" data-dismiss="modal"]
-    | Закрыть
-  button.btn.btn-primary#submitDialogBtn
-    | Применить
+.box-body
+  table.table.table-bordered
+    thead
+      th
+      th ФИО
+      th Адрес
+      th 
+    tbody
+      = render 'list'
+  = paginate @clients
 
 javascript:
   $('#submitDialogBtn').on('click', function(e){

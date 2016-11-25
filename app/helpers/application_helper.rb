@@ -1,7 +1,15 @@
 module ApplicationHelper
-  def page_title(title)
+ def page_title(title)
    content_for(:page_title) { title }
  end
+ 
+ def modal_title(title)
+   content_for(:modal_title) { title }
+ end
+ 
+ def modal_search_form_action(action)
+   content_for(:modal_search_form_action) { action }
+ end           
  
  def error_messages(resource)
     return "" if resource.errors.empty?

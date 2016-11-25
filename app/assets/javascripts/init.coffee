@@ -3,7 +3,7 @@ $ ->
     checkboxClass: 'icheckbox_square-blue'
     radioClass: 'iradio_square-blue'
     increaseArea: '20%'
-    
+      
   $('#datatable').DataTable
     responsive: true
     processing: true

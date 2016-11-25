@@ -5,6 +5,7 @@ class References::ClientsController < ApplicationController
     respond_to do |format|
       format.html
       format.json { render json: ClientDatatable.new(view_context) }
+      format.js {render layout: false}
     end
   end
 
@@ -16,6 +17,10 @@ class References::ClientsController < ApplicationController
   end
 
   def edit
+    respond_to do |format|
+      format.html
+      format.js {render layout: false}
+    end  
   end
 
   def create
@@ -37,6 +42,7 @@ class References::ClientsController < ApplicationController
       if @client.update(client_params)
         format.html { redirect_to references_clients_url, notice: 'Контрагент был успешно изменён.' }
         format.json { render :show, status: :ok, location: @client }
+        format.js { render layout: false }
       else
         format.html { render :edit }
         format.json { render json: @client.errors, status: :unprocessable_entity }
@@ -53,7 +59,9 @@ class References::ClientsController < ApplicationController
   end
   
   def select_clients_dialog
-    @clients = Client.search(params[:search]).ordered_by_name.page(params[:page] || 1).per(10) 
+    @clients = Client.search(params[:search]).ordered_by_name.page(params[:page] || 1).per(10)
+    session[:clients_page] = params[:page]
+    session[:clients_search] = params[:search] 
     render layout: false
   end  
 

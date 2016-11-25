@@ -1,0 +1,5 @@
+$('#listContainer').empty();
+$(".modal-footer").show();
+$(".search-form").show();
+$(".search-form #search").val("<%= @client.name %>");
+$("#listContainer").html("<div class='loading'></div>").load("<%= select_clients_dialog_references_clients_path(search: @client.name) %>");

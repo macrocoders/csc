@@ -1,32 +1,36 @@
 = form_for(@order, url: @order.new_record? ? documents_orders_path : documents_order_path(@order)) do |f|
   = error_messages(@order)
-  .form-group
-    = f.label :warehouse_id
-    = f.select :warehouse_id, Warehouse.all.map{ |w| [w.title, w.id]}, {}, {class: 'form-control'}
-  .form-group
-    = f.label :job_type
-    = f.select :job_type, job_types, {}, {class: 'form-control'}  
-  .form-group
-    = f.label :client_id
-    .input-group
-      = text_field_tag :client_name, @order.client.try(:name), class: 'form-control', disabled: true 
-      .input-group-addon
-        = link_to select_clients_dialog_references_clients_path, data: {target: "#modalDialog", toggle: "modal"} do 
-          i.fa.fa-search
-      = f.hidden_field :client_id, class: 'form-control'      
-  .form-group
-    = f.label :model_id
-    .input-group
-      = f.text_field :model_id, class: 'form-control', disabled: true
-      .input-group-addon
-        = link_to "#", data: {target: "#modalDialog", toggle: "modal"} do 
-          i.fa.fa-search  
-  .form-group
-    = f.label :imei
-    = f.text_field :imei, class: 'form-control'
-  .form-group
-    = f.label :serial_number
-    = f.text_field :serial_number, class: 'form-control'          
+  .row 
+    .form-group.col-md-6
+      = f.label :warehouse_id
+      = f.select :warehouse_id, Warehouse.all.map{ |w| [w.title, w.id]}, {}, {class: 'form-control'}
+    .form-group.col-md-6
+      = f.label :job_type
+      = f.select :job_type, job_types, {}, {class: 'form-control'}
+  .row      
+    .form-group.col-md-6
+      = f.label :client_id
+      .input-group
+        = text_field_tag :client_name, @order.client.try(:name), class: 'form-control', disabled: true 
+        .input-group-addon
+          = link_to select_clients_dialog_references_clients_path, data: {target: "#modalDialog", toggle: "modal", remote: false} do 
+            i.fa.fa-search
+        = f.hidden_field :client_id, class: 'form-control'      
+    .form-group.col-md-6
+      = f.label :model_id
+      .input-group
+        = text_field_tag :model_name,  @order.model.try(:title), class: 'form-control', disabled: true
+        .input-group-addon
+          = link_to "#", data: {target: "#modalDialog", toggle: "modal"} do 
+            i.fa.fa-search
+        = f.hidden_field :model_id, class: 'form-control'      
+  .row
+    .form-group.col-md-6
+      = f.label :imei
+      = f.text_field :imei, class: 'form-control'
+    .form-group.col-md-6
+      = f.label :serial_number
+      = f.text_field :serial_number, class: 'form-control'          
   .form-group
     = f.label :defect
     = f.text_field :defect, class: 'form-control'

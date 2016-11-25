@@ -1,0 +1,4 @@
+$('#listContainer').empty();
+$(".modal-footer").show();
+$(".search-form").show();
+$("#listContainer").html("<div class='loading'></div>").load("<%= select_clients_dialog_references_clients_path(page: session[:clients_page] || 1, search: session[:clients_search] || '') %>");

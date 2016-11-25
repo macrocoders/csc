@@ -1,3 +1,18 @@
 #modalDialog.modal.fade
   .modal-dialog
-    .modal-content#listContainer
+    .modal-content
+      .modal-header
+        button.close[type="button" data-dismiss="modal" aria-hidden="true"]
+          | ×
+        h4.modal-title
+          = yield :modal_title
+        div.search-form  
+          = form_tag("#{yield :modal_search_form_action}", remote: true, method: 'get', id: 'searchForm') do
+            .form-group
+                = text_field_tag :search, nil, autofocus: true, class: 'form-control'
+      .modal-body#listContainer    
+      .modal-footer
+        button.btn.btn-default[type="button" data-dismiss="modal"]
+          | Закрыть
+        button.btn.btn-primary#submitDialogBtn
+          | Применить

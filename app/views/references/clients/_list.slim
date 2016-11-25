@@ -2,4 +2,8 @@
   tr
     td= radio_button_tag :client_id, client.id, false, data: {name: client.name, id: client.id}
     td= client.name
-    td= client.address  
+    td= client.address
+    td
+      = link_to edit_references_client_path(client), remote: true, class: 'btn btn-app-small' do 
+        i.fa.fa-edit
+      

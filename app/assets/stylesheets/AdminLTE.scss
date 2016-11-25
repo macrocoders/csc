@@ -4930,6 +4930,19 @@ table.text-center th {
 .chart canvas {
   width: 100% !important;
 }
+
+.modal-content {
+  .loading {
+    background-image: asset-url('loading.gif');
+    height: 245px;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  
+  .search-form {
+    margin-top: 10px;
+  }
+}  
 /*
  * Misc: print
  * -----------
