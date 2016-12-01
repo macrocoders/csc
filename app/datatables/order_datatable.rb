@@ -16,9 +16,9 @@ class OrderDatatable < AjaxDatatablesRails::Base
       [
         I18n.l(record.created_at, format: :default),  
         record.id,  
-        record.brand.title,
+        record.model.brand.title,
         record.model.title,
-        record.client.full_name,
+        record.client.name,
         record.type,
         record.completeness,
         link_to(content_tag(:i, '', class: 'fa fa-edit'), edit_documents_order_path(record), class: 'btn btn-app-small'),
@@ -28,6 +28,6 @@ class OrderDatatable < AjaxDatatablesRails::Base
   end
 
   def get_raw_records
-    Order.includes(:client, :warehouse, model: :brand)
+    Order.includes(:client, :warehouse, model: :brand).all
   end  
 end

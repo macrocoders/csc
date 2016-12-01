@@ -3,18 +3,6 @@ module ApplicationHelper
    content_for(:page_title) { title }
  end
  
- def modal_title(title)
-   content_for(:modal_title) { title }
- end
- 
- def modal_search_form_action(action)
-   content_for(:modal_search_form_action) { action }
- end 
- 
- def modal_create_new_link(link)
-   content_for(:modal_create_new_link) { link }
- end          
- 
  def error_messages(resource)
     return "" if resource.errors.empty?
 

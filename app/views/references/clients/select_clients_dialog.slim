@@ -11,14 +11,14 @@
 
 javascript:
   $('#submitDialogBtn').on('click', function(e){
+    e.preventDefault();
     var client =  $('input:checked[type="radio"][name="client_id"]')
     if (client.length > 0) {
       $('#order_client_id').val(client.data('id'));
       $('#client_name').val(client.data('name'));  
       $('#modalDialog').modal('hide');
     } else {
-      alert('Клиент не выбран.');
+      //alert('Клиент не выбран.');
       return false;
     };
-    e.preventDefault();
   })

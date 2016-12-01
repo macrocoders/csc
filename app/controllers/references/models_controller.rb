@@ -51,6 +51,13 @@ class References::ModelsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def select_models_dialog
+    @models = Model.search(params[:search]).ordered_by_title.page(params[:page] || 1).per(10)
+    session[:models_page] = params[:page]
+    session[:models_search] = params[:search] 
+    render layout: false
+  end  
 
   private
     def set_model

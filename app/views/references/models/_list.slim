@@ -1,0 +1,4 @@
+- @models.each do |model|
+  tr
+    td= radio_button_tag :model_id, model.id, false, data: {title: model.title_with_brand, id: model.id}
+    td= model.title_with_brand

@@ -10,7 +10,9 @@ Rails.application.routes.draw do
     resources :users
     resources :warehouses
     resources :brands
-    resources :models
+    resources :models do 
+      get 'select_models_dialog', on: :collection
+    end  
   end
   
   namespace :documents do

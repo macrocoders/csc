@@ -1,0 +1,22 @@
+.box-body
+  table.table.table-bordered
+    thead
+      th
+      th Модель 
+    tbody
+      = render 'list'
+  = paginate @models
+
+javascript:
+  $('#submitDialogBtn').on('click', function(e){
+    e.preventDefault();
+    var model =  $('input:checked[type="radio"][name="model_id"]')
+    if (model.length > 0) {
+      $('#order_model_id').val(model.data('id'));
+      $('#model_title').val(model.data('title'));  
+      $('#modalDialog').modal('hide');
+    } else {
+      //alert('Модель не выбрана.');
+      return false;
+    };
+  })

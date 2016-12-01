@@ -13,15 +13,15 @@
       .input-group
         = text_field_tag :client_name, @order.client.try(:name), class: 'form-control', disabled: true 
         .input-group-addon
-          = link_to select_clients_dialog_references_clients_path, data: {target: "#modalDialog", toggle: "modal", remote: false} do 
+          = link_to select_clients_dialog_references_clients_path, data: {target: "#modalDialog", toggle: "modal", remote: false, title: 'Контрагенты', search_action: select_clients_dialog_references_clients_path, new_link: new_references_client_path} do 
             i.fa.fa-search
         = f.hidden_field :client_id, class: 'form-control'      
     .form-group.col-md-6
       = f.label :model_id
       .input-group
-        = text_field_tag :model_name,  @order.model.try(:title), class: 'form-control', disabled: true
+        = text_field_tag :model_title,  @order.model.try(:title_with_brand), class: 'form-control', disabled: true
         .input-group-addon
-          = link_to "#", data: {target: "#modalDialog", toggle: "modal"} do 
+          = link_to select_models_dialog_references_models_path, data: {target: "#modalDialog", toggle: "modal", remote: false, title: 'Модели', search_action: select_models_dialog_references_models_path, new_link: new_references_model_path} do 
             i.fa.fa-search
         = f.hidden_field :model_id, class: 'form-control'      
   .row
@@ -42,4 +42,4 @@
     = f.text_area :description, class: 'form-control'   
   .box-footer
     = link_to t('app.buttons.back'), :back, class: 'btn btn-default'
-    = f.submit (@order.new_record? ? 'Создать' : 'Изменить'), class: "btn btn-info pull-right"
+    = f.submit (@order.new_record? ? 'Создать' : 'Изменить'), class: "btn btn-info pull-right" 
