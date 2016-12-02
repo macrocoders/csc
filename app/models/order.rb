@@ -11,11 +11,13 @@ class Order < ApplicationRecord
     end
   end
 
-  aasm column: 'payment_status' do
-    state :not_paid, initial: true
-    state :partially_paid
-    state :fully_paid
-  end
+  #aasm column: 'payment_status' do
+  #  state :not_paid, initial: true
+  #  state :partially_paid
+  #  state :fully_paid
+  #end
+  
+  paginates_per 50
   
   belongs_to :model
   belongs_to :warehouse
@@ -25,6 +27,8 @@ class Order < ApplicationRecord
   # job types
   PAY_TYPE = 0
   GARANTY_TYPE = 1
+  
+  scope :ordered, -> {order('created_at DESC')}
   
   def type
     job_type.zero? ? 'Платный' : 'Гарантийный'

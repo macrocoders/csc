@@ -3,9 +3,9 @@ module OrdersHelper
     [['Платный', Order::PAY_TYPE], ['Гарантийный', Order::GARANTY_TYPE]]
   end
   
-  def work_status_s(order)
+  def order_work_status(order)
     case order.work_status
-    when 'accepted'
+    when "accepted"
       'Принято'
     when 'transferred_to_engineer'
       'Передано инженеру'
@@ -16,7 +16,7 @@ module OrdersHelper
     end        
   end
   
-  def work_status_color(order)
+  def order_status_color(order)
     case order.work_status
     when 'accepted'
       '#FF734C'
@@ -27,5 +27,11 @@ module OrdersHelper
     else 
       '#fff'
     end        
-  end     
+  end
+  
+  def order_action_links(order)
+    [content_tag(:li, link_to('Смотреть', documents_order_path(order))),
+     content_tag(:li, link_to('Редактировать', edit_documents_order_path(order)))].join.html_safe
+     #link_to(, documents_order_path(order), method: :delete, class: 'btn btn-app-small btn-danger', data: { confirm: "Вы действительно хотите удалить заказ?" })
+  end       
 end

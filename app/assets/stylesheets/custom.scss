@@ -1,0 +1,14 @@
+.box.height800 {
+  height: 850px;
+  overflow-y: auto;
+}
+.box.live-box {
+  table tr td{
+    padding: 2px;
+  }
+  nav.navbar.navbar-default {
+    position: fixed;
+    width: 86%;
+    z-index: 1001;
+  }
+}

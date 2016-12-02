@@ -2,10 +2,7 @@ class Documents::OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
 
   def index
-    respond_to do |format|
-      format.html
-      format.json { render json: OrderDatatable.new(view_context) }
-    end
+    @orders = Order.includes(:model, :warehouse, :client, :user).ordered.page params[:page] 
   end
 
   def show

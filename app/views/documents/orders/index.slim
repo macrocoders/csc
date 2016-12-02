@@ -2,21 +2,18 @@
 
 .row
   .col-md-12
-    .box
-      .box-header
-        .box-tools
-          .input-group.input-group-sm
-            = link_to 'Создать новый', new_documents_order_path, class: 'btn btn-block btn-default'
-      .box-body
-        table.table.table-hover#datatable data-source=(documents_orders_path(format: :json))
-          thead
-            tr
-              th Дата
-              th Номер
-              th Брэнд
-              th Модель
-              th Контрагент
-              th Тип работы
-              th Комплектность
-              th
-          tbody
+    .box.height800.live-box
+      = render 'navigation'
+      .box-body.table-responsive
+        table.table.table-hover
+          tr
+            th[style='width: 30px;']
+            th Дата
+            th Номер
+            th Брэнд
+            th Модель
+            th Контрагент
+            th Тип работы
+            th Комплектность
+            th Статус
+          = render @orders

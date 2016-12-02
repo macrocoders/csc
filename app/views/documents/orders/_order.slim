@@ -1,0 +1,10 @@
+tr[style="background-color: #{order_status_color(order)}"]
+  td= render 'shared/table_actions', actions: order_action_links(order)
+  td= l(order.created_at, format: :default)  
+  td= order.id  
+  td= order.model.brand.title
+  td= order.model.title
+  td= order.client.name
+  td= order.type
+  td= order.completeness
+  td= order_work_status(order)
