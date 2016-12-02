@@ -3357,6 +3357,39 @@ table.text-center th {
   padding: 20px;
   margin: 10px 25px;
 }
+.show {
+  position: relative;
+  background: #fff;
+  border: 1px solid #f4f4f4;
+  padding: 20px;
+  margin: 10px 25px;
+  
+  dl {
+    width: 100%;
+    //overflow: hidden;
+    padding: 0;
+    margin: 0
+  }
+  dt {
+    float: left;
+    background-color: #F6F4F4;
+    border: 1px solid #E0D8D8;
+    width: 20%;
+    padding: 10px;
+    margin: 0;
+  }
+  dd {
+    float: left;
+    background-color: #F6F4F4;
+    border: 1px solid #E0D8D8;
+    width: 70%;
+    padding: 10px;
+    margin: 0;
+  }
+  .actions {
+    margin-top: 30px;
+  }
+}
 .invoice-title {
   margin-top: 0;
 }
@@ -4970,6 +5003,12 @@ table.text-center th {
     padding-top: 0 !important;
   }
   .invoice {
+    width: 100%;
+    border: 0;
+    margin: 0;
+    padding: 0;
+  }
+  .show {
     width: 100%;
     border: 0;
     margin: 0;

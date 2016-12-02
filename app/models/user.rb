@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable, :registerable
   
   has_one :warehouse
+  has_many :orders
   
   validates :first_name, presence: true
   validates :last_name, presence: true

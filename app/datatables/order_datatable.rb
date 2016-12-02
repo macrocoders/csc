@@ -21,8 +21,9 @@ class OrderDatatable < AjaxDatatablesRails::Base
         record.client.name,
         record.type,
         record.completeness,
+        [link_to(content_tag(:i, '', class: 'fa fa-eye'), documents_order_path(record), class: 'btn btn-app-small'),
         link_to(content_tag(:i, '', class: 'fa fa-edit'), edit_documents_order_path(record), class: 'btn btn-app-small'),
-        link_to(content_tag(:i, '', class: 'fa fa-remove'), documents_order_path(record), method: :delete, class: 'btn btn-app-small btn-danger', data: { confirm: "Вы действительно хотите удалить сотрудника?" })
+        link_to(content_tag(:i, '', class: 'fa fa-remove'), documents_order_path(record), method: :delete, class: 'btn btn-app-small btn-danger', data: { confirm: "Вы действительно хотите удалить сотрудника?" })].join
       ]
     end
   end

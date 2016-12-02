@@ -47,7 +47,7 @@ class Documents::OrdersController < ApplicationController
   def destroy
     @order.destroy
     respond_to do |format|
-      format.html { redirect_to orders_url, notice: 'Заказ наряд успешно удалён.' }
+      format.html { redirect_to documents_orders_url, notice: 'Заказ наряд успешно удалён.' }
       format.json { head :no_content }
     end
   end
@@ -58,6 +58,6 @@ class Documents::OrdersController < ApplicationController
     end
 
     def order_params
-      params.require(:order).permit(:client_id, :warehouse_id, :job_type, :model_id, :imei, :serial_number, :defect, :completeness, :appearance, :description)
+      params.require(:order).permit(:client_id, :user_id, :warehouse_id, :job_type, :model_id, :imei, :serial_number, :defect, :completeness, :appearance, :description)
     end
 end

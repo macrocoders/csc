@@ -1,6 +1,7 @@
 = form_for(@order, url: @order.new_record? ? documents_orders_path : documents_order_path(@order)) do |f|
   = error_messages(@order)
   .row 
+    = f.hidden_field :user_id, value: current_user.id
     .form-group.col-md-6
       = f.label :warehouse_id
       = f.select :warehouse_id, Warehouse.all.map{ |w| [w.title, w.id]}, {}, {class: 'form-control'}

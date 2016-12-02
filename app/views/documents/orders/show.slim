@@ -1,0 +1,37 @@
+- page_title ["Заказ наряд №", @order.id].join(' ')
+
+section.show.invoice
+  .row
+    .col-md-7
+      dl
+        dt Склад
+        dd= @order.warehouse.title
+        dt Тип работы
+        dd= @order.type
+        dt Контрагент
+        dd= @order.client.name
+        dt Адрес
+        dd= @order.client.address
+        dt Телефон
+        dd= [@order.client.phone, @order.client.additional_phone].join(' ')
+        dt Модель
+        dd= @order.model.title
+        dt IMEI
+        dd= @order.imei
+        dt Серийный номер
+        dd= @order.serial_number
+        dt Заявленный дефект
+        dd= @order.defect
+        dt Комплектность
+        dd= @order.completeness
+        dt Комментарий
+        dd= @order.description
+        dt Ответсвенный
+        dd= @order.user.full_name
+  .row.actions
+    .col-xs-12
+      = link_to 'Назад', :back, class: "btn btn-default"
+      = link_to edit_documents_order_path(@order), class: "btn btn-primary pull-right" do
+        <i class="fa fa-edit"></i> Изменить
+      = link_to "#", class: "btn btn-success pull-right", style: "margin-right: 5px;" do
+        <i class="fa fa-print"></i> Печать    
