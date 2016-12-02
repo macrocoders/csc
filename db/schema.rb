@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161201123401) do
+ActiveRecord::Schema.define(version: 20161202075428) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -79,7 +79,7 @@ ActiveRecord::Schema.define(version: 20161201123401) do
   create_table "orders", force: :cascade do |t|
     t.integer  "client_id"
     t.integer  "warehouse_id"
-    t.integer  "job_type",      default: 0
+    t.integer  "job_type",       default: 0
     t.integer  "model_id"
     t.string   "imei"
     t.string   "serial_number"
@@ -87,9 +87,11 @@ ActiveRecord::Schema.define(version: 20161201123401) do
     t.string   "completeness"
     t.string   "appearance"
     t.text     "description"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.integer  "user_id"
+    t.string   "work_status"
+    t.string   "payment_status"
     t.index ["client_id"], name: "index_orders_on_client_id", using: :btree
     t.index ["model_id"], name: "index_orders_on_model_id", using: :btree
     t.index ["warehouse_id"], name: "index_orders_on_warehouse_id", using: :btree
