@@ -2,7 +2,11 @@ class Documents::OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
 
   def index
-    @orders = Order.includes(:model, :warehouse, :client, :user).ordered.page params[:page] 
+    @orders = Order.includes(:model, :warehouse, :client, :user).ordered.page params[:page]
+    respond_to do |format|
+      format.html
+      format.js {render layout: false}
+    end 
   end
 
   def show

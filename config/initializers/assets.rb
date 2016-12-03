@@ -12,4 +12,4 @@ Rails.application.config.assets.paths << Rails.root.join("vendor", "stylesheets"
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
 # Rails.application.config.assets.precompile += %w( search.js )
-Rails.application.config.assets.precompile += %w( pages/**/*.js )
+Rails.application.config.assets.precompile += %w( orders.coffee jquery.infinite-pages.js)

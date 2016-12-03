@@ -1,10 +1,13 @@
 - page_title 'Заказ наряды'
 
+- content_for :javascripts do 
+  = javascript_include_tag 'jquery.infinite-pages', 'orders'
+
 .row
   .col-md-12
     .box.height800.live-box
       = render 'navigation'
-      .box-body.table-responsive
+      .box-body.table-responsive.infinite-table
         table.table.table-hover
           tr
             th[style='width: 30px;']
@@ -16,4 +19,6 @@
             th Тип работы
             th Комплектность
             th Статус
-          = render @orders
+          = render partial: 'orders', object: @orders
+        .pagination
+          = link_to_next_page(@orders, 'След. страница', remote: true)   

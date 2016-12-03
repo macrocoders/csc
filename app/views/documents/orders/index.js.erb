@@ -1,0 +1,6 @@
+$(".infinite-table table").append("<%= j render(partial: 'orders', locals: {orders: @orders}) %>");
+<% if @orders.last_page? %>
+  $('.pagination').html("Конец");
+<% else %>
+  $('.pagination').html("<%= j link_to_next_page(@orders, 'Следующие', remote: true) %>");
+<% end %>

@@ -59,3 +59,5 @@ gem 'jquery-datatables-rails' #, git: 'git@github.com:rweng/jquery-datatables-ra
 gem 'ajax-datatables-rails' #, git: 'git@github.com:antillas21/ajax-datatables-rails.git', branch: 'v-0-4-0'
 
 gem 'aasm'
+
+gem 'jquery-infinite-pages'
