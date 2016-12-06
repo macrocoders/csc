@@ -3,8 +3,8 @@
   .row 
     = f.hidden_field :user_id, value: current_user.id
     .form-group.col-md-6
-      = f.label :warehouse_id
-      = f.select :warehouse_id, Warehouse.all.map{ |w| [w.title, w.id]}, {}, {class: 'form-control'}
+      = f.label :stock_location_id
+      = f.select :stock_location_id, StockLocation.all.map{ |w| [w.name, w.id]}, {}, {class: 'form-control'}
     .form-group.col-md-6
       = f.label :job_type
       = f.select :job_type, job_types, {}, {class: 'form-control'}

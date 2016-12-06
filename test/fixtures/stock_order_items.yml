@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  stock_location: one
+  order: one
+  count_on_hand: 1
+
+two:
+  stock_location: two
+  order: two
+  count_on_hand: 1

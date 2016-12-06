@@ -61,3 +61,5 @@ gem 'ajax-datatables-rails' #, git: 'git@github.com:antillas21/ajax-datatables-r
 gem 'aasm'
 
 gem 'jquery-infinite-pages'
+
+gem 'acts_as_paranoid'

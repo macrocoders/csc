@@ -32,7 +32,7 @@ ru:
         is_supplier: 'Поставщик'
       order:
         job_type: 'Тип работы'
-        warehouse_id: 'Склад'
+        stock_location_id: 'Склад'
         client_id: 'Контрагент'
         model_id: 'Модель'
         imei: 'Имей'
