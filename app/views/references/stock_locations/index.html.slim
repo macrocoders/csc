@@ -6,9 +6,9 @@
       .box-header
         .box-tools
           .input-group.input-group-sm
-            = link_to 'Создать новый', new_references_warehouse_path, class: 'btn btn-block btn-default'
+            = link_to 'Создать новый', new_references_stock_location_path, class: 'btn btn-block btn-default'
       .box-body
-        table.table.table-hover#datatable data-source=(references_warehouses_path(format: :json))
+        table.table.table-hover#datatable data-source=(references_stock_locations_path(format: :json))
           thead
             tr
               th ID

@@ -1,0 +1,11 @@
+= form_for(@stock_location, url: @stock_location.new_record? ? references_stock_locations_path : references_stock_location_path(@stock_location)) do |f|
+  = error_messages(@stock_location)
+  .form-group
+    = f.label :name
+    = f.text_field :name, class: 'form-control'
+  .form-group
+    = f.label :user_id
+    = f.select :user_id, User.all.map{ |u| [u.full_name, u.id]}, {}, {class: 'form-control'}
+  .box-footer
+    = link_to t('app.buttons.back'), :back, class: 'btn btn-default'
+    = f.submit (@stock_location.new_record? ? 'Создать' : 'Изменить'), class: "btn btn-info pull-right"

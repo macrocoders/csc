@@ -20,7 +20,6 @@ class Order < ApplicationRecord
   paginates_per 50
   
   belongs_to :model
-  belongs_to :warehouse
   belongs_to :client
   belongs_to :user
   

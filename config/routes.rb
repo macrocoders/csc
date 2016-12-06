@@ -8,7 +8,7 @@ Rails.application.routes.draw do
       get 'select_clients_dialog', on: :collection
     end  
     resources :users
-    resources :warehouses
+    resources :stock_locations
     resources :brands
     resources :models do 
       get 'select_models_dialog', on: :collection
