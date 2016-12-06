@@ -1,5 +1,5 @@
 .box.height800 {
-  height: 850px;
+  height: 800px;
   overflow-y: auto;
 }
 .box.live-box {
@@ -10,5 +10,8 @@
     position: fixed;
     width: 86%;
     z-index: 1001;
+  }
+  .infinite-table {
+    margin-top: 42px;
   }
 }
