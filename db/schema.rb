@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161207062900) do
+ActiveRecord::Schema.define(version: 20161207074606) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -74,6 +74,17 @@ ActiveRecord::Schema.define(version: 20161207062900) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["brand_id"], name: "index_models_on_brand_id", using: :btree
+  end
+
+  create_table "order_status_changes", force: :cascade do |t|
+    t.integer  "order_id"
+    t.string   "previous_status"
+    t.string   "status"
+    t.integer  "originator_id"
+    t.string   "originator_type"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["order_id"], name: "index_order_status_changes_on_order_id", using: :btree
   end
 
   create_table "order_transfers", force: :cascade do |t|
@@ -169,6 +180,7 @@ ActiveRecord::Schema.define(version: 20161207062900) do
   end
 
   add_foreign_key "models", "brands"
+  add_foreign_key "order_status_changes", "orders"
   add_foreign_key "order_transfers", "orders"
   add_foreign_key "order_transfers", "users"
   add_foreign_key "orders", "clients"

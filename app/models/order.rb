@@ -26,7 +26,10 @@ class Order < ApplicationRecord
   belongs_to :stock_location
   belongs_to :current_stock_location, class_name: 'StockLocation'
   
-  after_create :set_current_stock_location
+  has_many :status_changes, class_name: 'OrderStatusChange'
+  has_many :transfers, class_name: 'OrderTransfer'
+  
+  after_create :set_current_stock_location, :create_status_change
   
   # job types
   PAY_TYPE = 0
@@ -42,5 +45,9 @@ class Order < ApplicationRecord
   
   def set_current_stock_location
     self.update_attribute(:current_stock_location, stock_location)
-  end  
+  end
+  
+  def create_status_change
+    status_changes.create(status: work_status, originator: self)
+  end    
 end
