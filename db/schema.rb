@@ -78,7 +78,7 @@ ActiveRecord::Schema.define(version: 20161206133620) do
 
   create_table "orders", force: :cascade do |t|
     t.integer  "client_id"
-    t.integer  "job_type",          default: 0
+    t.integer  "job_type",                  default: 0
     t.integer  "model_id"
     t.string   "imei"
     t.string   "serial_number"
@@ -86,15 +86,26 @@ ActiveRecord::Schema.define(version: 20161206133620) do
     t.string   "completeness"
     t.string   "appearance"
     t.text     "description"
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
     t.integer  "user_id"
     t.string   "work_status"
     t.string   "payment_status"
     t.integer  "stock_location_id"
+    t.integer  "current_stock_location_id"
     t.index ["client_id"], name: "index_orders_on_client_id", using: :btree
+    t.index ["current_stock_location_id"], name: "index_orders_on_current_stock_location_id", using: :btree
     t.index ["model_id"], name: "index_orders_on_model_id", using: :btree
     t.index ["stock_location_id"], name: "index_orders_on_stock_location_id", using: :btree
+  end
+
+  create_table "stock_items", force: :cascade do |t|
+    t.integer  "stock_location_id"
+    t.integer  "count_on_hand",     default: 0
+    t.datetime "deleted_at"
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.index ["stock_location_id"], name: "index_stock_items_on_stock_location_id", using: :btree
   end
 
   create_table "stock_locations", force: :cascade do |t|
@@ -106,25 +117,14 @@ ActiveRecord::Schema.define(version: 20161206133620) do
     t.index ["user_id"], name: "index_stock_locations_on_user_id", using: :btree
   end
 
-  create_table "stock_order_items", force: :cascade do |t|
-    t.integer  "stock_location_id"
-    t.integer  "order_id"
-    t.integer  "count_on_hand",     default: 0
-    t.datetime "deleted_at"
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
-    t.index ["order_id"], name: "index_stock_order_items_on_order_id", using: :btree
-    t.index ["stock_location_id"], name: "index_stock_order_items_on_stock_location_id", using: :btree
-  end
-
-  create_table "stock_order_movements", force: :cascade do |t|
-    t.integer  "stock_order_item_id"
+  create_table "stock_movements", force: :cascade do |t|
+    t.integer  "stock_item_id"
     t.integer  "quantity"
     t.integer  "originator_id"
     t.string   "originator_type"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
-    t.index ["stock_order_item_id"], name: "index_stock_order_movements_on_stock_order_item_id", using: :btree
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["stock_item_id"], name: "index_stock_movements_on_stock_item_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -158,8 +158,7 @@ ActiveRecord::Schema.define(version: 20161206133620) do
   add_foreign_key "models", "brands"
   add_foreign_key "orders", "clients"
   add_foreign_key "orders", "models"
+  add_foreign_key "stock_items", "stock_locations"
   add_foreign_key "stock_locations", "users"
-  add_foreign_key "stock_order_items", "orders"
-  add_foreign_key "stock_order_items", "stock_locations"
-  add_foreign_key "stock_order_movements", "stock_order_items"
+  add_foreign_key "stock_movements", "stock_items"
 end

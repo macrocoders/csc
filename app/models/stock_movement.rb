@@ -1,10 +1,10 @@
-class StockOrderMovement < ApplicationRecord
+class StockMovement < ApplicationRecord
   QUANTITY_LIMITS = {
-      max: 1,
-      min: -1
+      max: 2**31 - 1,
+      min: -2**31
     }.freeze
 
-  belongs_to :stock_order_item
+  belongs_to :stock_item
   belongs_to :originator, polymorphic: true
 
   after_create :update_stock_item_quantity

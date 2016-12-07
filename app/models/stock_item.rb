@@ -1,15 +1,15 @@
-class StockOrderItem < ApplicationRecord
+class StockItem < ApplicationRecord
   acts_as_paranoid
   
   belongs_to :stock_location
-  belongs_to :order
-  has_many :stock_order_movements
+  #belongs_to :order
+  has_many :stock_movements
   
   validates :stock_location, :order, presence: true
   
   validates :count_on_hand, numericality: {
                               greater_than_or_equal_to: 0,
-                              less_than_or_equal_to: 1,
+                              less_than_or_equal_to: 2**31 - 1,
                               only_integer: true }
                               
 
