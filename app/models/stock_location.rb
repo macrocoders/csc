@@ -1,49 +1,48 @@
 class StockLocation < ApplicationRecord
   belongs_to :user
   has_many :orders
-  has_many :stock_order_items
+  has_many :stock_items
   
   validates :name, presence: true
   validates :name, uniqueness: true
   
   scope :ordered, -> {order(:created_at)}
   
-  after_create :create_order_stock_items
+  #after_create :create_stock_items
   
-  def propagate_order(order)
-     self.stock_order_items.create!(order: order)
-  end
-  
-  def stock_order_item(order_id)
-    stock_order_items.where(order_id: order_id).order(:id).first
+  def propagate_product(product)
+     self.stock_items.create!(product: product)
   end
   
-  def stock_order_item_or_create(order)
-    stock_order_item(order) || stock_order_items.create(order_id: order.id)
+  def stock_item(product_id)
+    stock_items.where(product_id: product_id).order(:id).first
+  end
+  
+  def stock_item_or_create(product)
+    stock_item(product) || stock_items.create(prodcut_id: product.id)
   end
 
-  def count_on_hand(order)
-    stock_order_item(order).try(:count_on_hand)
+  def count_on_hand(product)
+    stock_item(product).try(:count_on_hand)
   end
 
-
-  def restock(order, quantity, originator = nil)
-    move(order, quantity, originator)
+  def restock(product, quantity, originator = nil)
+    move(product, quantity, originator)
   end
 
-  def unstock(order, quantity, originator = nil)
-    move(order, -quantity, originator)
+  def unstock(product, quantity, originator = nil)
+    move(product, -quantity, originator)
   end
 
-  def move(order, quantity, originator = nil)
-    stock_order_item_or_create(order).stock_order_movements.create!(quantity: quantity,
-                                                        originator: originator)
+  def move(product, quantity, originator = nil)
+    stock_item_or_create(product).stock_movements.create!(quantity: quantity,
+                                                          originator: originator)
   end  
   
   private 
-    def create_order_stock_items
-      Order.find_each do |order|
-        propagate_order(order)
+    def create_stock_items
+      Product.find_each do |product|
+        propagate_product(product)
       end
     end
 end

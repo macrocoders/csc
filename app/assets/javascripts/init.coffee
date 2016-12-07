@@ -16,3 +16,8 @@ $ ->
   $('#modalDialog').on 'hidden.bs.modal', ->
     $(this).removeData 'bs.modal'
     return
+  
+  setTimeout (->
+    $('.alert-box').hide()
+    return
+  ), 5000 

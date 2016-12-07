@@ -1,0 +1,14 @@
+= form_for(@order_transfer, url: documents_order_transfers_path(order_id: @order)) do |f|
+  = error_messages(@order_transfer)
+  .row 
+    = f.hidden_field :user_id, value: current_user.id
+    = f.hidden_field :source_location_id, value: @order.current_stock_location.id
+    .form-group.col-md-6
+      = f.label :source_location
+      = f.select :source_location, options_for_select(StockLocation.all.map{ |w| [w.name, w.id]}, @order.current_stock_location.id), {}, {class: 'form-control', disabled: true}
+    .form-group.col-md-6
+      = f.label :destination_location_id
+      = f.select :destination_location_id, StockLocation.where.not(id: @order.current_stock_location.id).map{ |w| [w.name, w.id]}, {}, {class: 'form-control'}
+  .form-group
+    = f.label :description
+    = f.text_field :description, class: 'form-control'

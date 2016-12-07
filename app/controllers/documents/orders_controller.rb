@@ -53,6 +53,7 @@ class Documents::OrdersController < ApplicationController
     end
   end
   
+  
   private
     def set_order
       @order = Order.find(params[:id])

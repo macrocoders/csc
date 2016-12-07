@@ -17,5 +17,6 @@ Rails.application.routes.draw do
   
   namespace :documents do
     resources :orders
+    resources :order_transfers, only: %w(new create)
   end  
 end
