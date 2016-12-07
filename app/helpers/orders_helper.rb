@@ -31,7 +31,7 @@ module OrdersHelper
   
   def order_action_links(order)
     [content_tag(:li, link_to('Смотреть', documents_order_path(order))),
-     content_tag(:li, link_to('Редактировать', edit_documents_order_path(order)))].join.html_safe
-     #link_to(, documents_order_path(order), method: :delete, class: 'btn btn-app-small btn-danger', data: { confirm: "Вы действительно хотите удалить заказ?" })
+     content_tag(:li, link_to('Редактировать', edit_documents_order_path(order))),
+     content_tag(:li, link_to('Удалить', documents_order_path(order), method: :delete, data: { confirm: "Вы действительно хотите удалить заказ?" }))].join.html_safe
   end       
 end

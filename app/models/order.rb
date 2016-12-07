@@ -1,5 +1,6 @@
 class Order < ApplicationRecord
   include AASM
+  acts_as_paranoid
   
   aasm column: 'work_status' do
     state :accepted, initial: true

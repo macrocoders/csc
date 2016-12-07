@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161206133620) do
+ActiveRecord::Schema.define(version: 20161207061618) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -93,6 +93,7 @@ ActiveRecord::Schema.define(version: 20161206133620) do
     t.string   "payment_status"
     t.integer  "stock_location_id"
     t.integer  "current_stock_location_id"
+    t.datetime "deleted_at"
     t.index ["client_id"], name: "index_orders_on_client_id", using: :btree
     t.index ["current_stock_location_id"], name: "index_orders_on_current_stock_location_id", using: :btree
     t.index ["model_id"], name: "index_orders_on_model_id", using: :btree
