@@ -40,6 +40,7 @@ ru:
         defect: 'Заявленный дефект'
         completeness: 'Комплектность'
         description: 'Дополнительное описание'
+        appearance: 'Внешний вид'
       order_transfer:
         description: 'Комментарий'
         source_location_id: 'Текущий склад'
@@ -47,7 +48,8 @@ ru:
         destination_location_id: 'Склад назначение'
       stock_location:
         name: 'Название'
-        user_id: 'Ответственный'    
+        user_id: 'Ответственный'
+        is_engineer_stock: 'Склад инженера'    
 
   
     errors:

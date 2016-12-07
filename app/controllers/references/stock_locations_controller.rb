@@ -58,6 +58,6 @@ class References::StockLocationsController < ApplicationController
     end
 
     def stock_location_params
-      params.require(:stock_location).permit(:name, :user_id, :active)
+      params.require(:stock_location).permit(:name, :user_id, :active, :is_engineer_stock)
     end
 end

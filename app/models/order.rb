@@ -5,10 +5,12 @@ class Order < ApplicationRecord
   aasm column: 'work_status' do
     state :accepted, initial: true
     state :transferred_to_engineer
+    state :received_from_the_engineer
     state :diagnosed
     
-    event :transfer_to_engineer do
-      transitions from: :accepted, to: :transferred_to_engineer
+    event :transfer do
+      transitions from: %w(accepted received_from_the_engineer), to: :transferred_to_engineer, if: :order_moved_to_engineer?
+      transitions from: :transferred_to_engineer, to: :received_from_the_engineer, unless: :order_moved_to_engineer?
     end
   end
 
@@ -41,7 +43,11 @@ class Order < ApplicationRecord
     job_type.zero? ? 'Платный' : 'Гарантийный'
   end
   
-  private 
+  private
+  
+  def order_moved_to_engineer?
+    current_stock_location.is_engineer_stock  
+  end 
   
   def set_current_stock_location
     self.update_attribute(:current_stock_location, stock_location)

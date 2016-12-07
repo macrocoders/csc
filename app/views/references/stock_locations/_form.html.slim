@@ -6,6 +6,10 @@
   .form-group
     = f.label :user_id
     = f.select :user_id, User.all.map{ |u| [u.full_name, u.id]}, {}, {class: 'form-control'}
+  .form-group
+    = f.label :is_engineer_stock do 
+      = f.check_box :is_engineer_stock
+      |   Склад инженера?  
   .box-footer
     = link_to t('app.buttons.back'), :back, class: 'btn btn-default'
     = f.submit (@stock_location.new_record? ? 'Создать' : 'Изменить'), class: "btn btn-info pull-right"

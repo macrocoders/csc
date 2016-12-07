@@ -11,6 +11,8 @@ module OrdersHelper
       'Передано инженеру'
     when 'diagnosed'
       'Диагностировано'
+    when 'received_from_the_engineer'
+      'Получено от инженера'  
     else 
       '-'
     end        
@@ -24,6 +26,8 @@ module OrdersHelper
       '#FFAF48'
     when 'diagnosed'
       '#FFF4C0'
+    when 'received_from_the_engineer'
+      '#E07DE0'
     else 
       '#fff'
     end        

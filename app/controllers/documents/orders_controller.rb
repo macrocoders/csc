@@ -60,6 +60,8 @@ class Documents::OrdersController < ApplicationController
     end
 
     def order_params
-      params.require(:order).permit(:client_id, :user_id, :stock_location_id, :job_type, :model_id, :imei, :serial_number, :defect, :completeness, :appearance, :description)
+      params.require(:order).permit(:client_id, :user_id, :stock_location_id, 
+                                    :job_type, :model_id, :imei, :serial_number,
+                                    :defect, :completeness, :appearance, :description)
     end
 end

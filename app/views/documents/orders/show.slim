@@ -2,32 +2,84 @@
 
 section.show.invoice
   .row
-    .col-md-7
-      dl
-        dt Склад
-        dd= @order.warehouse.title
-        dt Тип работы
-        dd= @order.type
-        dt Контрагент
-        dd= @order.client.name
-        dt Адрес
-        dd= @order.client.address
-        dt Телефон
-        dd= [@order.client.phone, @order.client.additional_phone].join(' ')
-        dt Модель
-        dd= @order.model.title
-        dt IMEI
-        dd= @order.imei
-        dt Серийный номер
-        dd= @order.serial_number
-        dt Заявленный дефект
-        dd= @order.defect
-        dt Комплектность
-        dd= @order.completeness
-        dt Комментарий
-        dd= @order.description
-        dt Ответсвенный
-        dd= @order.user.full_name
+    .col-md-12
+      .panel-group#accordion[role="tablist" aria-multiselectable="true"]
+        .panel.panel-default
+          .panel-heading[role="tab"]
+            h4.panel-title
+              a role="button" data-toggle="collapse" data-parent="#accordion" href="#commonData" aria-expanded="true" aria-controls="commonData"
+                | Общие данные по заказ наряду 
+
+          #commonData.panel-collapse.collapse[role="tabpanel" aria-labelledby="commonData"]
+            .panel-body
+              dl
+                dt Тип работы
+                dd= @order.type
+                dt Заявленный дефект
+                dd= @order.defect
+                dt Комплектность
+                dd= @order.completeness
+                dt Внешний вид
+                dd= @order.appearance
+                dt Комментарий
+                dd= @order.description
+      
+        .panel.panel-default
+          .panel-heading[role="tab"]
+            h4.panel-title
+              a role="button" data-toggle="collapse" data-parent="#accordion" href="#client" aria-expanded="true" aria-controls="client"
+                | Контрагент: 
+                span= @order.client.name
+
+          #client.panel-collapse.collapse[role="tabpanel" aria-labelledby="client"]
+            .panel-body
+              dl
+                dt Адрес
+                dd= @order.client.address
+                dt Телефон
+                dd= [@order.client.phone, @order.client.additional_phone].join(' ')
+
+        .panel.panel-default
+          .panel-heading[role="tab"]
+            h4.panel-title
+              a role="button" data-toggle="collapse" data-parent="#accordion" href="#model" aria-expanded="true" aria-controls="model"
+                | Модель: 
+                span= @order.model.title_with_brand
+
+          #model.panel-collapse.collapse[role="tabpanel" aria-labelledby="model"]
+            .panel-body
+              dl
+                dt IMEI
+                dd= @order.imei
+                dt Серийный номер
+                dd= @order.serial_number
+        
+        .panel.panel-default
+          .panel-heading[role="tab"]
+            h4.panel-title
+              a role="button" data-toggle="collapse" data-parent="#accordion" href="#currentLocation" aria-expanded="true" aria-controls="currentLocation"
+                | Текущее местонахождение: 
+                span= @order.current_stock_location.name 
+
+          #currentLocation.panel-collapse.collapse[role="tabpanel" aria-labelledby="currentLocation"]
+            .panel-body
+              = render 'transfers'
+                       
+                
+        .panel.panel-default
+          .panel-heading[role="tab"]
+            h4.panel-title
+              a role="button" data-toggle="collapse" data-parent="#accordion" href="#additionalInfo" aria-expanded="true" aria-controls="additionalInfo"
+                | Дополнительная информация: 
+
+          #additionalInfo.panel-collapse.collapse[role="tabpanel" aria-labelledby="additionalInfo"]
+            .panel-body
+              dl
+                dt Принято на склад
+                dd= @order.stock_location.name
+                dt Ответственный
+                dd= @order.user.full_name  
+
   .row.actions
     .col-xs-12
       = link_to 'Назад', :back, class: "btn btn-default"
