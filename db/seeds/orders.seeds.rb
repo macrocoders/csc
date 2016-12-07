@@ -2,7 +2,7 @@ class << self
   Faker::Config.locale = 'ru'
   
   def create_order
-    order = Order.new(warehouse_id: Warehouse.find_or_create_by(title: 'Основной склад').id,
+    order = Order.new(stock_location_id: StockLocation.find_or_create_by(name: 'Основной склад').id,
                         job_type: Faker::Number.between(0, 1),
                         client_id: Client.all.sample(1).first.id,
                         model_id: Model.all.sample(1).first.id,
