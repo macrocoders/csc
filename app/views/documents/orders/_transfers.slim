@@ -4,14 +4,17 @@ table.table.table-bordered
     th Документ
     th Отправитель
     th Получатель
+    th Ответственный
   tr
     td= l @order.created_at 
     td= "Заказ наряд № #{@order.id}"
     td= @order.client.name 
     td= @order.stock_location.name
+    td= @order.user.full_name
   - @order.transfers.ordered.each do |transfer|
     tr
       td= l transfer.created_at
       td= "Перемещение № #{transfer.id}"
       td= transfer.source_location.name
       td= transfer.destination_location.name
+      td= @order.user.full_name
