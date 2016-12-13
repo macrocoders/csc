@@ -17,7 +17,7 @@ html
           h1= yield :page_title
           ol.breadcrumb
             = yield :breadcrumbs
-        section.content    
+        section.content ng-app='csc'   
           = yield
         = render 'shared/modal_dialog'  
   = javascript_include_tag 'application'

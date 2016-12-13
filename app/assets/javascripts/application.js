@@ -1,5 +1,6 @@
 //= require jquery
 //= require jquery_ujs
+//= require angular/angular
 //= require dataTables/jquery.dataTables
 //= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
 //= require dataTables/jquery.dataTables
@@ -7,5 +8,6 @@
 //= require icheck.min
 //= require jquery.mask.min
 //= require app
+//= require main
 //= require init
 //= require ajax_pagination
