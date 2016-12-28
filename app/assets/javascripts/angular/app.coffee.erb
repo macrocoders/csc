@@ -1,0 +1,4 @@
+@csc = angular.module('csc',['smart-table'])
+<% url = Csc::Application.routes.url_helpers %>
+@urls = 
+  clients_path: '<%= url.references_clients_path(format: :json) %>'

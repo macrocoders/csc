@@ -65,4 +65,4 @@ gem 'jquery-infinite-pages'
 gem 'acts_as_paranoid'
 
 gem 'bower-rails'
-#gem 'angular-rails-templates'
+gem 'angular-rails-templates'

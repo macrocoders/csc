@@ -1,13 +1,15 @@
 //= require jquery
 //= require jquery_ujs
 //= require angular/angular
+//= require angular-smart-table/dist/smart-table.min
 //= require dataTables/jquery.dataTables
 //= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
 //= require dataTables/jquery.dataTables
 //= require bootstrap-sprockets
 //= require icheck.min
 //= require jquery.mask.min
-//= require app
+//= require angular/app
 //= require main
 //= require init
 //= require ajax_pagination
+//= require_tree ./angular

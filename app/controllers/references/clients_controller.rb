@@ -4,7 +4,11 @@ class References::ClientsController < ApplicationController
   def index
     respond_to do |format|
       format.html
-      format.json { render json: ClientDatatable.new(view_context) }
+      format.json { render text: Client.search(params[:search]).
+                                 ordered_by_name.
+                                 page(params[:page]).
+                                 to_json(methods: [:address, :legal_status_s])
+                  }
       format.js {render layout: false}
     end
   end

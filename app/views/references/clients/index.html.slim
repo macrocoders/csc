@@ -1,22 +1,37 @@
 - page_title 'Контрагенты'
 
-.row
-  .col-xs-12
+.row ng-controller='clientsController'
+  .col-xs-12 
     .box
       .box-header
         .box-tools
           .input-group.input-group-sm
             = link_to 'Создать нового', new_references_client_path, class: 'btn btn-block btn-default'
-      .box-body
-        table.table.table-hover#datatable data-source=(references_clients_path(format: :json))
+      .box-body.table-container
+        table.table.table-hover[st-table='displayedClients' st-safe-src='clients' st-pagination-scroll st-pipe='callServer']
           thead
             tr
-              th ID
               th Имя  
               th Телефон  
               th Адрес
               th Юр. статус
               th Добавлен  
               th
-              th
-          tbody    
+            tr
+              th colspan="5"
+                input.form-control[st-search="name" placeholder="Поиск ..." type="search"]  
+          tbody 
+            tr ng-repeat='client in displayedClients'
+              td 
+                | {{client.name}}
+              td 
+                | {{client.phone}}
+              td 
+                | {{client.address}}
+              td 
+                | {{client.legal_status_s}}
+              td 
+                | {{client.created_at | date}}
+              td
+      .loading-indicator ng-show="isLoading"        
+               

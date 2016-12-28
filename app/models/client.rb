@@ -1,4 +1,6 @@
 class Client < ApplicationRecord
+  paginates_per 20
+  
   has_many :orders
   
   validates :name, presence: true
@@ -12,14 +14,14 @@ class Client < ApplicationRecord
   def legal_status_s
     legal_status.zero? ? 'Физ. лицо' : 'Юр. лицо'
   end
-  
+    
   def address
     [city, street, hous, flat].join(', ')
   end
   
   def self.search(search)
     if search
-      where('name LIKE ?', "%#{search}%")
+      where('LOWER(name) LIKE ?', "%#{search.downcase}%")
     else
       Client.all
     end
