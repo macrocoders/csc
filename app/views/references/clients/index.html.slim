@@ -1,16 +1,14 @@
-- page_title 'Контрагенты'
+/- page_title 'Контрагенты'
 
 .row ng-controller='clientsController'
   .col-xs-12 
     .box
-      .box-header
-        .box-tools
-          .input-group.input-group-sm
-            = link_to 'Создать нового', new_references_client_path, class: 'btn btn-block btn-default'
+      = render 'navigation'
       .box-body.table-container
         table.table.table-hover[st-table='displayedClients' st-safe-src='clients' st-pagination-scroll st-pipe='callServer']
           thead
-            tr
+            tr 
+              th[style='width: 30px;']
               th Имя  
               th Телефон  
               th Адрес
@@ -18,10 +16,11 @@
               th Добавлен  
               th
             tr
-              th colspan="5"
+              th colspan="6"
                 input.form-control[st-search="name" placeholder="Поиск ..." type="search"]  
           tbody 
             tr ng-repeat='client in displayedClients'
+              td= render 'shared/table_actions', actions: "<a href='/references/clients/{{client.id}}/edit'>Редактировать</a>".html_safe
               td 
                 | {{client.name}}
               td 
