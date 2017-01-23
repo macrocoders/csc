@@ -1,5 +1,5 @@
 class StockLocation < ApplicationRecord
-  belongs_to :user
+  belongs_to :owner, foreign_key: 'user_id', class_name: 'User'
   has_many :orders
   has_many :stock_items
   
@@ -7,6 +7,7 @@ class StockLocation < ApplicationRecord
   validates :name, uniqueness: true
   
   scope :ordered, -> {order(:created_at)}
+  scope :ordered_by_name, -> {order(:name)}
   
   #after_create :create_stock_items
   
@@ -37,7 +38,8 @@ class StockLocation < ApplicationRecord
   def move(product, quantity, originator = nil)
     stock_item_or_create(product).stock_movements.create!(quantity: quantity,
                                                           originator: originator)
-  end  
+  end
+  
   
   private 
     def create_stock_items

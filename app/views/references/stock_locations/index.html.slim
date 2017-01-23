@@ -1,20 +1,19 @@
-- page_title 'Склады'
+/- page_title 'Склады'
 
 .row
   .col-xs-12
     .box
-      .box-header
-        .box-tools
-          .input-group.input-group-sm
-            = link_to 'Создать новый', new_references_stock_location_path, class: 'btn btn-block btn-default'
+      = render 'navigation'
       .box-body
-        table.table.table-hover#datatable data-source=(references_stock_locations_path(format: :json))
+        table.table.table-hover
           thead
             tr
-              th ID
+              th[style='width: 30px;']
               th Название  
-              th Ответственный  
+              th Ответственный
+              th Склад мастера?  
               th Создан
-              th
-              th
           tbody    
+            = render @stock_locations
+      .box-footer.clearfix
+        = paginate @stock_locations

@@ -2,10 +2,7 @@ class References::StockLocationsController < ApplicationController
   before_action :set_stock_location, only: [:show, :edit, :update, :destroy]
 
   def index
-    respond_to do |format|
-      format.html
-      format.json { render json: StockLocationDatatable.new(view_context) }
-    end
+    @stock_locations = StockLocation.ordered_by_name.page params[:page]
   end
 
   def show

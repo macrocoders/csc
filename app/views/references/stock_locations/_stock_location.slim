@@ -1,0 +1,6 @@
+tr
+  td= render 'shared/table_actions', actions: stock_location_action_links(stock_location)
+  td= stock_location.name
+  td= stock_location.owner.full_name
+  td= stock_location.is_engineer_stock ? 'Да' : 'Нет'
+  td= l stock_location.created_at, format: :default
