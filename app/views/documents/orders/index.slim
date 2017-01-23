@@ -1,24 +1,53 @@
-- page_title 'Заказ наряды'
-
-- content_for :javascripts do 
-  = javascript_include_tag 'jquery.infinite-pages', 'orders'
-
-.row
+.row ng-controller='ordersController' ng-init='init("#{@orders_total_number}")'
   .col-md-12
-    .box.height800.live-box
+    .box
       = render 'navigation'
-      .box-body.table-responsive.infinite-table
-        table.table.table-hover
-          tr
-            th[style='width: 30px;']
-            th Дата
-            th Номер
-            th Брэнд
-            th Модель
-            th Контрагент
-            th Тип работы
-            th Комплектность
-            th Статус
-          = render partial: 'orders', object: @orders
-        .pagination
-          = link_to_next_page(@orders, 'След. страница', remote: true)   
+      .box-body.table-container
+        table.table.table-hover[st-table='displayedOrders' st-safe-src='orders' st-pagination-scroll st-pipe='callServer']
+          thead
+            tr
+              th[style='width: 30px;']
+              th Дата
+              th Номер
+              th Вид оборудования
+              th Брэнд
+              th Модель
+              th Контрагент
+              th Тип работы
+              th Комплектность
+              th Статус
+            tr
+              th colspan="10"
+                input.form-control[st-search="search" placeholder="Поиск ..." type="search"]
+          tbody 
+            tr style="background-color: {{order.working_state_color}}" ng-repeat='order in displayedOrders'
+              td
+                .dropdown
+                  button.btn.btn-default.btn-xs[id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"]
+                    span.caret
+                  ul.dropdown-menu[aria-labelledby="dLabel"]
+                    li
+                      a[href="/documents/orders/{{order.id}}"] Смотреть
+                    li
+                      a[href="/documents/orders/{{order.id}}/edit"] Редактировать
+                    li
+                      a[href="/documents/order_transfers/new?order_id={{order.id}}" data-target="#modalDialog" data-toggle="modal" data-remote="false" data-title="Перемещение"] Переместить     
+              td 
+                | {{order.created_at | date}}
+              td 
+                | {{order.id}}
+              td 
+                | {{order.equipment_type_title}} 
+              td 
+                | {{order.brand_title}}
+              td 
+                | {{order.model_title}}
+              td 
+                | {{order.client_name}}
+              td
+                | {{order.type}}  
+              td
+                | {{order.completeness}}
+              td
+                | {{order.working_state}}          
+      .loading-indicator ng-show="isLoading"

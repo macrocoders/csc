@@ -1,12 +1,22 @@
 class Documents::OrdersController < ApplicationController
-  before_action :set_order, only: [:show, :edit, :update, :destroy]
+  before_action :set_order, only: %w(show edit update destroy)
 
   def index
-    @orders = Order.includes(:model, :stock_location, :client, :user).ordered.page params[:page]
     respond_to do |format|
-      format.html
+      format.html { @orders_total_number = Order.count } 
+      format.json { render text: Order.search(params[:search]).
+                                 ordered.
+                                 page(params[:page]).
+                                 to_json(methods: [:brand_title, :model_title, 
+                                                   :client_name, :type, 
+                                                   :equipment_type_title, 
+                                                   :working_state, 
+                                                   :working_state_color
+                                                  ]
+                                        )
+                  }
       format.js {render layout: false}
-    end 
+    end
   end
 
   def show

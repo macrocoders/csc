@@ -2,6 +2,8 @@ class Order < ApplicationRecord
   include AASM
   acts_as_paranoid
   
+  paginates_per 20
+  
   aasm column: 'work_status' do
     state :accepted, initial: true
     state :transferred_to_engineer
@@ -19,9 +21,7 @@ class Order < ApplicationRecord
   #  state :partially_paid
   #  state :fully_paid
   #end
-  
-  paginates_per 50
-  
+    
   belongs_to :model
   belongs_to :client
   belongs_to :user
@@ -42,6 +42,60 @@ class Order < ApplicationRecord
   def type
     job_type.zero? ? 'Платный' : 'Гарантийный'
   end
+  
+  def equipment_type_title
+     model.equipment_type.present? ? model.equipment_type.title : ''
+  end
+  
+  def brand_title
+    model.brand.present? ? model.brand.title : ''
+  end
+  
+  def model_title
+    model.present? ? model.title : ''
+  end
+  
+  def client_name
+    client.name
+  end
+  
+  def working_state
+    case work_status
+    when "accepted"
+      'Принято'
+    when 'transferred_to_engineer'
+      'Передано инженеру'
+    when 'diagnosed'
+      'Диагностировано'
+    when 'received_from_the_engineer'
+      'Получено от инженера'  
+    else 
+      '-'
+    end        
+  end
+  
+  def working_state_color
+    case work_status
+    when 'accepted'
+      '#FF734C'
+    when 'transferred_to_engineer'
+      '#FFAF48'
+    when 'diagnosed'
+      '#FFF4C0'
+    when 'received_from_the_engineer'
+      '#E07DE0'
+    else 
+      '#fff'
+    end        
+  end      
+  
+  def self.search(search)
+    if search
+      joins(:model, :client).where('LOWER(models.title) LIKE ? OR CAST(orders.id AS text) LIKE ? OR LOWER(clients.name) LIKE ?', "%#{search.downcase}%", "%#{search}%", "%#{search.downcase}%")
+    else
+      includes(:model, :client).all
+    end
+  end 
   
   private
   
