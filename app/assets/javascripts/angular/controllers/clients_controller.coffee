@@ -2,14 +2,14 @@
     $scope.isLoading = false
     $scope.clients = []
     lastStart = 0
-    maxNodes = 40
     itemByPage = 20
     
+    $scope.init = (clientsTotalNumber) ->
+      $scope.clientsTotalNumber = clientsTotalNumber 
       
     $scope.callServer = (tableState) ->
-      console.log(tableState)
       $scope.isLoading = true
-      tableState.pagination.totalItemCount = 68
+      tableState.pagination.totalItemCount = $scope.clientsTotalNumber
       clientService.getClients(tableState.pagination.start / itemByPage, tableState.search.predicateObject).then (result) ->
         if tableState.pagination.start == 0
           $scope.displayedClients = result.data

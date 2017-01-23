@@ -1,6 +1,4 @@
-/- page_title 'Контрагенты'
-
-.row ng-controller='clientsController'
+.row ng-controller='clientsController' ng-init='init("#{@clients_total_number}")'
   .col-xs-12 
     .box
       = render 'navigation'

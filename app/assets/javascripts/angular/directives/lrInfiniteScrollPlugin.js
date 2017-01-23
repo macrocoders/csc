@@ -14,6 +14,7 @@ angular.module('smart-table')
                 var promise = null;
                 var lastRemaining = 9999;
                 var container = angular.element(element.parent());
+                
 
                 container.bind('scroll', function () {
                     var remaining = container[0].scrollHeight - (container[0].clientHeight + container[0].scrollTop);

@@ -1,8 +1,16 @@
 class References::ModelsController < ApplicationController
-  before_action :set_model, only: [:show, :edit, :update, :destroy]
+  before_action :set_model, only: %w(show edit update destroy)
 
   def index
-    @models = Model.ordered_by_title.page params[:page]
+    respond_to do |format|
+      format.html { @models_total_number = Model.count } 
+      format.json { render text: Model.search(params[:search]).
+                                 ordered_by_title.
+                                 page(params[:page]).
+                                 to_json(methods: [:brand_title, :equipment_type_title])
+                  }
+      format.js {render layout: false}
+    end
   end
 
   def show

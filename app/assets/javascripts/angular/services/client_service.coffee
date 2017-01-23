@@ -8,7 +8,7 @@ that = this
         search = ''
       else
         search = search_obj.name
-      return $http.get(that.urls['clients_path'], params: {page: page, search: search})
+      return $http.get(that.urls['clients_path'], params: {page: page+1, search: search})
     
     service = 
       clients: []

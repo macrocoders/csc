@@ -1,4 +1,4 @@
-class Client < ApplicationRecord
+class Client < ApplicationRecord  
   paginates_per 20
   
   has_many :orders
@@ -9,7 +9,9 @@ class Client < ApplicationRecord
   
   #legal status
   NATURAL_PERSON_STATUS = 0
-  LEGAL_ENTITY_STATUS = 1 
+  LEGAL_ENTITY_STATUS = 1
+  
+  PAGINATES_PER = 20 
   
   def legal_status_s
     legal_status.zero? ? 'Физ. лицо' : 'Юр. лицо'

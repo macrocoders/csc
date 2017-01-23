@@ -3,7 +3,7 @@ class References::ClientsController < ApplicationController
 
   def index
     respond_to do |format|
-      format.html
+      format.html { @clients_total_number = Client.count }
       format.json { render text: Client.search(params[:search]).
                                  ordered_by_name.
                                  page(params[:page]).

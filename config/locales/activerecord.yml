@@ -17,6 +17,7 @@ ru:
       model:
         title: 'Название'
         brand_id: 'Брэнд'
+        equipment_type_id: 'Тип оборудования'
         created_at: 'Дата создания'
       client:
         name: 'Имя'

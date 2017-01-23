@@ -4,6 +4,9 @@
     = f.label :title
     = f.text_field :title, class: 'form-control'
   .form-group
+    = f.label :equipent_type_id
+    = f.select :equipment_type_id, EquipmentType.ordered_by_title.map{ |b| [b.title, b.id]}, {}, {class: 'form-control'}
+  .form-group
     = f.label :brand_id
     = f.select :brand_id, Brand.ordered_by_title.map{ |b| [b.title, b.id]}, {}, {class: 'form-control'}
   .box-footer

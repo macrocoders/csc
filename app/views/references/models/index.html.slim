@@ -1,20 +1,28 @@
-- page_title 'Модели'
-
-.row
+.row ng-controller='modelsController' ng-init='init("#{@models_total_number}")'
   .col-xs-12
     .box
-      .box-header
-        .box-tools
-          .input-group.input-group-sm
-            = link_to 'Создать новую', new_references_model_path, class: 'btn btn-block btn-default'
-      .box-body
-        table.table.table-hover#datatable data-source=(references_models_path(format: :json))
+      = render 'navigation'
+      .box-body.table-container
+        table.table.table-hover[st-table='displayedModels' st-safe-src='models' st-pagination-scroll st-pipe='callServer']
           thead
             tr
-              th ID
+              th
+              th Тип оборудования
               th Брэнд  
               th Модель  
               th Создана
-              th
-              th
-          tbody    
+            tr
+              th colspan="5"
+                input.form-control[st-search="title" placeholder="Поиск ..." type="search"]    
+          tbody 
+            tr ng-repeat='model in displayedModels'
+              td= render 'shared/table_actions', actions: "<a href='/references/models/{{model.id}}/edit'>Редактировать</a>".html_safe
+              td 
+                | {{model.equipment_type_title}}
+              td 
+                | {{model.brand_title}}
+              td 
+                | {{model.title}}
+              td 
+                | {{model.created_at | date}} 
+      .loading-indicator ng-show="isLoading"
