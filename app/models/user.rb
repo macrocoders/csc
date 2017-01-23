@@ -10,6 +10,7 @@ class User < ApplicationRecord
   validates :last_name, presence: true
   
   scope :ordered, -> {order(:created_at)}
+  scope :ordered_by_name, -> {order(:last_name, :first_name)}
   
   def full_name
     [first_name, last_name].join(' ')

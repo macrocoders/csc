@@ -1,0 +1,7 @@
+tr
+  td= render 'shared/table_actions', actions: user_action_links(user)
+  td= user.last_name
+  td= user.first_name
+  td= user.middle_name
+  td= user.email
+  td= l user.created_at, format: :default

@@ -1,22 +1,20 @@
-- page_title t('app.navigation.menu.users')
+/- page_title t('app.navigation.menu.users')
 
 .row
   .col-md-12
     .box
-      .box-header
-        .box-tools
-          .input-group.input-group-sm
-            = link_to 'Создать нового', new_references_user_path, class: 'btn btn-block btn-default'
+      = render 'navigation'
       .box-body
-        table.table.table-hover#datatable data-source=(references_users_path(format: :json))
+        table.table.table-hover
           thead
             tr
-              th ID
+              th[style='width: 30px;']
               th= t 'activerecord.attributes.user.last_name'
               th= t 'activerecord.attributes.user.first_name'
               th= t 'activerecord.attributes.user.middle_name'
               th= t 'activerecord.attributes.user.email' 
               th= t 'activerecord.attributes.user.created_at' 
-              th
-              th
           tbody
+            = render @users
+      .box-footer.clearfix
+        = paginate @users
