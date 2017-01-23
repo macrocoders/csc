@@ -18,6 +18,10 @@ class References::ModelsController < ApplicationController
 
   def new
     @model = Model.new
+    respond_to do |format|
+      format.html
+      format.js {render layout: false}
+    end  
   end
 
   def edit
@@ -25,14 +29,14 @@ class References::ModelsController < ApplicationController
 
   def create
     @model = Model.new(model_params)
-
+    
     respond_to do |format|
       if @model.save
         format.html { redirect_to references_models_url, notice: 'Модель успешно создана.' }
-        format.json { render :show, status: :created, location: @model }
+        format.js { render layout: false }
       else
         format.html { render :new }
-        format.json { render json: @model.errors, status: :unprocessable_entity }
+        format.js { render layout: false }
       end
     end
   end

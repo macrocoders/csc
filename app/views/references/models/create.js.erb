@@ -1,0 +1,9 @@
+if ("<%= @model.errors.empty? %>" === 'true') {
+  $('#listContainer').empty();
+  $(".modal-footer").show();
+  $(".search-form").show();
+  $(".search-form #search").val("<%= @model.title %>");
+  $("#listContainer").html("<div class='loading'></div>").load("<%= select_models_dialog_references_models_path(search: @model.title) %>");
+} else {
+  alert("<%= @model.errors.full_messages %>");
+} 

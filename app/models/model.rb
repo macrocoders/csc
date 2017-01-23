@@ -23,7 +23,7 @@ class Model < ApplicationRecord
     
   def self.search(search)
     if search
-      includes(:brand, :equipment_type).where('models.title LIKE ? OR brands.title LIKE ? OR equipment_types.title LIKE ?', "%#{search}%", "%#{search}%", "%#{search}%")
+      includes(:brand, :equipment_type).where('LOWER(models.title) LIKE ? OR LOWER(brands.title) LIKE ? OR LOWER(equipment_types.title) LIKE ?', "%#{search.downcase}%", "%#{search.downcase}%", "%#{search.downcase}%")
     else
       Model.includes(:brand, :equipment_type).all
     end
