@@ -2,10 +2,7 @@ class References::ModelsController < ApplicationController
   before_action :set_model, only: [:show, :edit, :update, :destroy]
 
   def index
-    respond_to do |format|
-      format.html
-      format.json { render json: ModelDatatable.new(view_context) }
-    end
+    @models = Model.ordered_by_title.page params[:page]
   end
 
   def show

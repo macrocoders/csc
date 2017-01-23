@@ -1,11 +1,8 @@
 class References::BrandsController < ApplicationController
-  before_action :set_brand, only: [:show, :edit, :update, :destroy]
+  before_action :set_brand, only: %w(show edit update destroy)
 
   def index
-    respond_to do |format|
-      format.html
-      format.json { render json: BrandDatatable.new(view_context) }
-    end
+    @brands = Brand.ordered_by_title.page params[:page]
   end
 
   def show

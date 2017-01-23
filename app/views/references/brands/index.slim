@@ -1,19 +1,15 @@
-- page_title 'Брэнды'
-
 .row
   .col-md-12
     .box
-      .box-header
-        .box-tools
-          .input-group.input-group-sm
-            = link_to 'Создать новый', new_references_brand_path, class: 'btn btn-block btn-default'
+      = render 'navigation'
       .box-body
-        table.table.table-hover#datatable data-source=(references_brands_path(format: :json))
+        table.table.table-hover
           thead
             tr
-              th ID
+              th[style='width: 30px;']
               th= t 'activerecord.attributes.brand.title'
               th= t 'activerecord.attributes.brand.created_at'
-              th
-              th
           tbody
+            = render @brands
+      .box-footer.clearfix
+        = paginate @brands  
