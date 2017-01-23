@@ -12,7 +12,8 @@ Rails.application.routes.draw do
     resources :brands
     resources :models do 
       get 'select_models_dialog', on: :collection
-    end  
+    end
+    resources :equipment_types  
   end
   
   namespace :documents do

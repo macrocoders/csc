@@ -1,0 +1,15 @@
+.row
+  .col-md-12
+    .box
+      = render 'navigation'
+      .box-body
+        table.table.table-hover
+          thead
+            tr
+              th[style='width: 30px;']
+              th= t 'activerecord.attributes.equipment_type.title'
+              th= t 'activerecord.attributes.equipment_type.created_at'
+          tbody
+            = render @equipment_types
+      .box-footer.clearfix
+        = paginate @equipment_types  

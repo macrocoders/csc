@@ -1,5 +1,6 @@
 class Model < ApplicationRecord
   belongs_to :brand
+  belongs_to :equipment_type
   has_many :orders
   
   validates :title, presence: true

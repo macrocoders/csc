@@ -33,6 +33,10 @@ aside.main-sidebar
               i.fa.fa-circle-o
               | Склады
           li
+            = active_link_to references_equipment_types_path, wrap_tag: :li do
+              i.fa.fa-circle-o
+              | Типы оборудования     
+          li
             = active_link_to references_brands_path, wrap_tag: :li do
               i.fa.fa-circle-o
               | Брэнды 

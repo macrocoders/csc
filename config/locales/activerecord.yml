@@ -49,7 +49,10 @@ ru:
       stock_location:
         name: 'Название'
         user_id: 'Ответственный'
-        is_engineer_stock: 'Склад инженера'    
+        is_engineer_stock: 'Склад инженера'
+      equipment_type:
+        title: 'Название'
+        created_at: 'Дата создания'      
 
   
     errors:

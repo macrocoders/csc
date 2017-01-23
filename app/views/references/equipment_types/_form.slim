@@ -1,0 +1,8 @@
+= form_for(@equipment_type, url: @equipment_type.new_record? ? references_equipment_types_path : references_equipment_type_path(@equipment_type)) do |f|
+  = error_messages(@equipment_type)
+  .form-group
+    = f.label :title
+    = f.text_field :title, class: 'form-control'
+  .box-footer
+    = link_to t('app.buttons.back'), :back, class: 'btn btn-default'
+    = f.submit (@equipment_type.new_record? ? 'Создать' : 'Изменить'), class: "btn btn-info pull-right"

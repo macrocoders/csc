@@ -1,0 +1,4 @@
+tr
+ td= render 'shared/table_actions', actions: equipment_type_action_links(equipment_type)
+ td= equipment_type.title
+ td= l equipment_type.created_at, format: :default
